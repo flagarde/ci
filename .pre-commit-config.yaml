@@ -57,3 +57,9 @@ repos:
   rev: v2.29.2
   hooks:
   - id: commitizen
+
+- repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+  rev: 2.4.0
+  hooks:
+  - id: editorconfig-checker
+    alias: ec
