@@ -54,7 +54,7 @@ repos:
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '150']
 
 - repo: https://github.com/commitizen-tools/commitizen
-  rev: v2.29.2
+  rev: v2.29.5
   hooks:
   - id: commitizen
 
