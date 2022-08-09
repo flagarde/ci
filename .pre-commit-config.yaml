@@ -68,3 +68,9 @@ repos:
   rev: v2.1.0
   hooks:
   - id: codespell
+
+- repo: https://github.com/AleksaC/hadolint-py
+  rev: v2.10.0
+  hooks:
+  - id: hadolint
+    args: []
