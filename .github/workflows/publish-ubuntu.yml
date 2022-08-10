@@ -72,7 +72,7 @@ jobs:
     - name: Build and test Docker image
       uses: docker/build-push-action@v3.1.1
       with:
-        context: .
+        context: ./Ubuntu
         build-args: |
           compiler=${{ matrix.version }}
           tests=true
