@@ -84,7 +84,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v3.1.1
       with:
-        context: .
+        context: ./Ubuntu
         build-args: |
           compiler=${{ matrix.version }}
         push: true
