@@ -74,3 +74,8 @@ repos:
   hooks:
   - id: hadolint
     args: [--ignore, DL3008, --ignore, DL3009]
+
+- repo: https://github.com/sirosen/check-jsonschema
+  rev: 0.17.1
+  hooks:
+  - id: check-github-workflows
