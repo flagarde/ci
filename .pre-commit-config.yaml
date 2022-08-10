@@ -73,4 +73,4 @@ repos:
   rev: v2.10.0
   hooks:
   - id: hadolint
-    args: []
+    args: [--ignore, DL3008, --ignore, DL3009]
