@@ -69,13 +69,25 @@ jobs:
       with:
         images: ${{ env.REGISTRY }}/${{ github.repository }}-ubuntu-${{ matrix.version }}-x86_64
 
+    - name: Build and test Docker image
+      uses: docker/build-push-action@v3.1.1
+      with:
+        context: .
+        build-args: |
+          compiler=${{ matrix.version }}
+          tests=true
+        push: false
+        file: ./Ubuntu/Dockerfile
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v3.1.1
       with:
         context: .
         build-args: |
           compiler=${{ matrix.version }}
-        push: false
+        push: true
         file: ./Ubuntu/Dockerfile
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}

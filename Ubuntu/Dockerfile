@@ -49,6 +49,9 @@ RUN case $compiler in \
 
 FROM base AS compiler
 ARG compiler
+ARG tests
+WORKDIR /home/root
+COPY tests /home/root/tests/
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 RUN case $compiler in \
@@ -154,6 +157,7 @@ RUN case $compiler in \
       echo "GCC Available : gcc-4.4, gcc-4.5, gcc-4.6, gcc-4.7, gcc-4.8, gcc-4.9, gcc-5, gcc-6, gcc-7, gcc-8, gcc-9, gcc-10, gcc-11, gcc-12";\
       echo "Clang Available : clang-3.5, clang-3.6, clang-3.7, clang-3.8, clang-3.9, clang-4, clang-5, clang-6, clang-7, clang-8, clang-9, clang-10, clang-11, clang-12, clang-13, clang-14, clang-15";;\
     esac &&\
+    apt-get upgrade; apt-get autoremove ; apt-get clean &&\
     echo "** make --version :" &&\
     make --version &&\
     echo "** CC --version :" &&\
@@ -161,4 +165,12 @@ RUN case $compiler in \
     echo "** CXX --version :" &&\
     $CXX --version &&\
     echo "** C_COMPILER_ID=$C_COMPILER_ID, C_COMPILER_VERSION=$C_COMPILER_VERSION" &&\
-    echo "** CXX_COMPILER_ID=$CXX_COMPILER_ID, CXX_COMPILER_VERSION=$CXX_COMPILER_VERSION"
+    echo "** CXX_COMPILER_ID=$CXX_COMPILER_ID, CXX_COMPILER_VERSION=$CXX_COMPILER_VERSION" &&\
+    case $tests in \
+    "true")\
+      apt-get install --no-install-recommends -y cmake ;\
+      cmake -B /home/root/build -S /home/root/tests ;\
+      cmake --build /home/root/build ;\
+      rm -rf /home/root/build ;\
+    esac &&\
+    rm -rf /home/root/tests
