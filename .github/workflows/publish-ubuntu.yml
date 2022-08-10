@@ -4,6 +4,13 @@ name: Ubuntu
 on:
   push:
     branches: [main]
+    paths:
+    - workflows/publish-ubuntu.yml
+    - Ubuntu/**
+  pull_request:
+    paths:
+    - workflows/publish-ubuntu.yml
+    - Ubuntu/**
 
 env:
   REGISTRY: ghcr.io
