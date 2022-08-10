@@ -88,6 +88,14 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
 
+    - name: Clean up old package versions
+      id: clean-up-old-package-versions
+      uses: stripethree/gpr-janitor@dist
+      with:
+        dry-run: false
+        keep-versions: 1
+        packages-to-fetch: 30
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v3.1.1
       with:
