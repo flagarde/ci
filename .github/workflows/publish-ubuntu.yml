@@ -73,7 +73,8 @@ jobs:
       uses: docker/build-push-action@v3.1.1
       with:
         context: .
-        build-args: ${{ matrix.version }}
+        build-args: |
+          compiler=${{ matrix.version }}
         push: false
         file: ./Ubuntu/Dockerfile
         tags: ${{ steps.meta.outputs.tags }}
