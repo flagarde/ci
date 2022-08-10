@@ -5,12 +5,12 @@ on:
   push:
     branches: [main]
     paths:
-    - workflows/publish-ubuntu.yml
     - Ubuntu/**
+    - .github/workflows/publish-ubuntu.yml
   pull_request:
     paths:
-    - workflows/publish-ubuntu.yml
     - Ubuntu/**
+    - .github/workflows/publish-ubuntu.yml
 
 env:
   REGISTRY: ghcr.io
