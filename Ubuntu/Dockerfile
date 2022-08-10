@@ -50,8 +50,8 @@ RUN case $compiler in \
 FROM base AS compiler
 ARG compiler
 ARG tests
-WORKDIR /home/root
-COPY tests /home/root/tests/
+WORKDIR .
+COPY tests ./tests/
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 RUN case $compiler in \
@@ -169,8 +169,8 @@ RUN case $compiler in \
     case $tests in \
     "true")\
       apt-get install --no-install-recommends -y cmake ;\
-      cmake -B /home/root/build -S /home/root/tests ;\
-      cmake --build /home/root/build ;\
-      rm -rf /home/root/build ;\
+      cmake -B ./build -S ./tests ;\
+      cmake --build ./build ;\
+      rm -rf ./build ;\
     esac &&\
-    rm -rf /home/root/tests
+    rm -rf ./tests
