@@ -97,6 +97,7 @@ jobs:
       with:
         dry-run: false
         keep-versions: 1
+        min-age-days: 0
         packages-to-fetch: 30
 
     - name: Build and push Docker image
