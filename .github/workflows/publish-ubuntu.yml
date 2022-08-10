@@ -91,6 +91,9 @@ jobs:
     - name: Clean up old package versions
       id: clean-up-old-package-versions
       uses: stripethree/gpr-janitor@dist
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        IMAGE_NAME: ${{ github.repository }}-ubuntu-${{ matrix.version }}-x86_64
       with:
         dry-run: false
         keep-versions: 1
