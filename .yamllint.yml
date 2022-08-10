@@ -57,5 +57,3 @@ rules:
     quote-type: single
     required: only-when-needed
   trailing-spaces: {}
-  truthy:
-    allowed-values: ['true', 'false']

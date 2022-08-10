@@ -1,0 +1,80 @@
+---
+name: Ubuntu
+
+on:
+  push:
+    branches: [main]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        version:
+        - gcc-4.4
+        - gcc-4.5
+        - gcc-4.6
+        - gcc-4.7
+        - gcc-4.8
+        - gcc-4.9
+        - gcc-5
+        - gcc-6
+        - gcc-7
+        - gcc-8
+        - gcc-9
+        - gcc-10
+        - gcc-11
+        - gcc-12
+        - clang-3.5
+        - clang-3.6
+        - clang-3.7
+        - clang-3.8
+        - clang-3.9
+        - clang-4
+        - clang-5
+        - clang-6
+        - clang-7
+        - clang-8
+        - clang-9
+        - clang-10
+        - clang-11
+        - clang-12
+        - clang-14
+        - clang-15
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Log in to the Container registry
+      uses: docker/login-action@v2.0.0
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@v4.0.1
+      with:
+        images: ${{ env.REGISTRY }}/${{ github.repository }}-ubuntu-${{ matrix.version }}-x86_64
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v3.0.0
+      with:
+        context: .
+        build-args: ${{ matrix.version }}
+        push: false
+        file: ./Ubuntu/Dockerfile
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
