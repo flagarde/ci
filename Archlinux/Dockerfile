@@ -3,7 +3,7 @@ SHELL ["/bin/bash","-o","pipefail","-c"]
 RUN pacman-key --init &&\
     pacman-key --populate archlinux &&\
     pacman --noconfirm --noprogressbar -Syu &&\
-    pacman --sync --needed --noconfirm --noprogressbar wget sudo fakeroot binutils make gcc &&\
+    pacman --sync --needed --noconfirm --noprogressbar wget sudo fakeroot binutils make gcc patch &&\
     useradd user --shell /bin/bash --create-home --home-dir /var/user &&\
     passwd --lock user &&\
     mkdir -p /etc/sudoers.d &&\
