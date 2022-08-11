@@ -67,7 +67,7 @@ RUN case $compiler in \
       export CC=gcc-11; export CXX=g++-11; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=11.3.0; export CXX_COMPILER_VERSION=11.3.0 ;;\
     "gcc-12")\
       sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc ;\
-      export CC=gcc-12; export CXX=g++-12; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=12.1.1; export CXX_COMPILER_VERSION=12.1.1 ;;\
+      export CC=gcc; export CXX=g++; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=12.1.1; export CXX_COMPILER_VERSION=12.1.1 ;;\
     "clang-3.5")\
       sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang35 ;\
       export CC=clang-3.5; export CXX=clang++-3.5; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.5.2; export CXX_COMPILER_VERSION=3.5.2 ;;\
@@ -110,7 +110,7 @@ RUN case $compiler in \
     echo "** CXX_COMPILER_ID=$CXX_COMPILER_ID, CXX_COMPILER_VERSION=$CXX_COMPILER_VERSION" &&\
     case $tests in \
     "true")\
-      pacman  install --no-install-recommends -y cmake ;\
+      ppacman --sync --noconfirm --noprogressbar cmake ;\
       cmake -B ./build -S ./tests ;\
       if [ $? -eq 0 ];\
         then exit 0;\
