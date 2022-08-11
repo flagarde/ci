@@ -125,5 +125,5 @@ RUN case $compiler in \
       fi;\
       rm -rf ./build ;\
     esac &&\
-    pacman -Rscn gcc &&\
+    pacman -Rscn --noconfirm --noprogressbar gcc &&\
     rm -rf ./tests
