@@ -4,11 +4,8 @@ name: Ubuntu ROOT
 on:
   push:
     branches: [main]
-    paths:
-    - .github/workflows/publish-ubuntu-root.yml
   pull_request:
-    paths:
-    - .github/workflows/publish-ubuntu-root.yml
+    branches: [main]
 
 env:
   REGISTRY: ghcr.io
