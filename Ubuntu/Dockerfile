@@ -157,8 +157,8 @@ RUN case $compiler in \
       echo "GCC Available : gcc-4.4, gcc-4.5, gcc-4.6, gcc-4.7, gcc-4.8, gcc-4.9, gcc-5, gcc-6, gcc-7, gcc-8, gcc-9, gcc-10, gcc-11, gcc-12";\
       echo "Clang Available : clang-3.5, clang-3.6, clang-3.7, clang-3.8, clang-3.9, clang-4, clang-5, clang-6, clang-7, clang-8, clang-9, clang-10, clang-11, clang-12, clang-13, clang-14, clang-15";;\
     esac &&\
-    RUN echo "export CC=$CC" >> /etc/bash.bashrc &&\
-    RUN echo "export CXX=$CXX" >> /etc/bash.bashrc &&\
+    echo "export CC=$CC" >> /etc/bash.bashrc &&\
+    echo "export CXX=$CXX" >> /etc/bash.bashrc &&\
     apt-get upgrade; apt-get autoremove ; apt-get clean &&\
     echo "** make --version :" &&\
     make --version &&\
