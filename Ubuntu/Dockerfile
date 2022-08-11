@@ -159,8 +159,6 @@ RUN case $compiler in \
     esac &&\
     echo "export CC=$CC" >> /etc/compiler.sh &&\
     echo "export CXX=$CXX" >> /etc/compiler.sh &&\
-    echo "echo $CC" >> /etc/compiler.sh &&\
-    echo "echo $CXX" >> /etc/compiler.sh &&\
     chmod a+rxw /etc/compiler.sh &&\
     apt-get upgrade; apt-get autoremove ; apt-get clean &&\
     echo "** make --version :" &&\
@@ -186,5 +184,4 @@ RUN case $compiler in \
       fi;\
       rm -rf ./build ;\
     esac &&\
-    rm -rf ./tests
-CMD ["/bin/bash","-c","/etc/compiler.sh"]
+    rm -rf ./tests \
