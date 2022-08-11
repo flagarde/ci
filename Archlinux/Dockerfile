@@ -21,6 +21,8 @@ RUN pacman-key --init &&\
 FROM base AS compiler
 ARG compiler
 ARG tests
+WORKDIR .
+COPY tests ./tests/
 SHELL ["/bin/bash","-o","pipefail","-c"]
 RUN case $compiler in \
     "gcc-4.3")\
