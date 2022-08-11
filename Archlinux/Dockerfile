@@ -3,7 +3,7 @@ SHELL ["/bin/bash","-o","pipefail","-c"]
 RUN pacman-key --init &&\
     pacman-key --populate archlinux &&\
     pacman --noconfirm --noprogressbar -Syu &&\
-    pacman --sync --needed --noconfirm --noprogressbar wget sudo fakeroot binutils &&\
+    pacman --sync --needed --noconfirm --noprogressbar wget sudo fakeroot binutils make gcc &&\
     useradd user --shell /bin/bash --create-home --home-dir /var/user &&\
     passwd --lock user &&\
     mkdir -p /etc/sudoers.d &&\
@@ -25,76 +25,76 @@ ARG tests
 SHELL ["/bin/bash","-o","pipefail","-c"]
 RUN case $compiler in \
     "gcc-4.3")\
-      trizen -S --needed --noconfirm --noprogressbar gcc43 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc43 ;\
       export CC=gcc-4.3; export CXX=g++-4.3; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=4.3.6; export CXX_COMPILER_VERSION=4.3.6 ;;\
     "gcc-4.4")\
-      trizen -S --needed --noconfirm --noprogressbar gcc44 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc44 ;\
       export CC=gcc-4.4; export CXX=g++-4.4; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=4.4.7; export CXX_COMPILER_VERSION=4.4.7 ;;\
     "gcc-4.5")\
-      trizen -S --needed --noconfirm --noprogressbar gcc45 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc45 ;\
       export CC=gcc-4.5; export CXX=g++-4.5; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=4.5.4; export CXX_COMPILER_VERSION=4.5.4 ;;\
     "gcc-4.6")\
-      trizen -S --needed --noconfirm --noprogressbar gcc46 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc46 ;\
       export CC=gcc-4.6; export CXX=g++-4.6; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=4.6.4; export CXX_COMPILER_VERSION=4.6.4 ;;\
     "gcc-4.7")\
-      trizen -S --needed --noconfirm --noprogressbar gcc47 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc47 ;\
       export CC=gcc-4.7; export CXX=g++-4.7; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=4.7.4; export CXX_COMPILER_VERSION=4.7.4 ;;\
     "gcc-4.8")\
-      trizen -S --needed --noconfirm --noprogressbar gcc48 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc48 ;\
       export CC=gcc-4.8; export CXX=g++-4.8; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=4.8.5; export CXX_COMPILER_VERSION=4.8.5 ;;\
     "gcc-4.9")\
-      trizen -S --needed --noconfirm --noprogressbar gcc49 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc49 ;\
       export CC=gcc-4.9; export CXX=g++-4.9; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=4.9.4; export CXX_COMPILER_VERSION=4.9.4 ;;\
     "gcc-5")\
-      trizen -S --needed --noconfirm --noprogressbar gcc5 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc5 ;\
       export CC=gcc-5; export CXX=g++-5; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=5.5.0; export CXX_COMPILER_VERSION=5.5.0 ;;\
     "gcc-6")\
-      trizen -S --needed --noconfirm --noprogressbar gcc6 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc6 ;\
       export CC=gcc-6; export CXX=g++-6; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=6.5.0; export CXX_COMPILER_VERSION=6.5.0 ;;\
     "gcc-7")\
-      trizen -S --needed --noconfirm --noprogressbar gcc7 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc7 ;\
       export CC=gcc-7; export CXX=g++-7; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=7.5.0; export CXX_COMPILER_VERSION=7.5.0 ;;\
     "gcc-8")\
-      trizen -S --needed --noconfirm --noprogressbar gcc8 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc8 ;\
       export CC=gcc-8; export CXX=g++-8; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=8.4.0; export CXX_COMPILER_VERSION=8.4.0 ;;\
     "gcc-9")\
-      trizen -S --needed --noconfirm --noprogressbar gcc9 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc9 ;\
       export CC=gcc-9; export CXX=g++-9; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=9.4.0; export CXX_COMPILER_VERSION=9.4.0 ;;\
     "gcc-10")\
-      trizen -S --needed --noconfirm --noprogressbar gcc10 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc10 ;\
       export CC=gcc-10; export CXX=g++-10; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=10.4.0; export CXX_COMPILER_VERSION=10.4.0 ;;\
     "gcc-11")\
-      trizen -S --needed --noconfirm --noprogressbar gcc11 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc11 ;\
       export CC=gcc-11; export CXX=g++-11; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=11.3.0; export CXX_COMPILER_VERSION=11.3.0 ;;\
     "gcc-12")\
-      trizen -S --needed --noconfirm --noprogressbar gcc ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc ;\
       export CC=gcc-12; export CXX=g++-12; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=12.1.1; export CXX_COMPILER_VERSION=12.1.1 ;;\
     "clang-3.5")\
-      trizen -S --needed --noconfirm --noprogressbar clang35 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang35 ;\
       export CC=clang-3.5; export CXX=clang++-3.5; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.5.2; export CXX_COMPILER_VERSION=3.5.2 ;;\
     "clang-4")\
-      trizen -S --needed --noconfirm --noprogressbar clang40 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang40 ;\
       export CC=clang-4.0; export CXX=clang++-4.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=4.0.1; export CXX_COMPILER_VERSION=4.0.1 ;;\
     "clang-5")\
-      trizen -S --needed --noconfirm --noprogressbar clang50 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang50 ;\
       export CC=clang-5.0; export CXX=clang++-5.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=5.0.2; export CXX_COMPILER_VERSION=5.0.2 ;;\
     "clang-7")\
-      trizen -S --needed --noconfirm --noprogressbar clang70 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang70 ;\
       export CC=clang-7; export CXX=clang++-7; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=7.0.1; export CXX_COMPILER_VERSION=7.0.1 ;;\
     "clang-8")\
-      trizen -S --needed --noconfirm --noprogressbar clang8 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang8 ;\
       export CC=clang-8; export CXX=clang++-8; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=8.0.1; export CXX_COMPILER_VERSION=8.0.1 ;;\
     "clang-9")\
-      trizen -S --needed --noconfirm --noprogressbar clang9 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang9 ;\
       export CC=clang-9; export CXX=clang++-9; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=9.0.1; export CXX_COMPILER_VERSION=9.0.1 ;;\
     "clang-10")\
-      trizen -S --needed --noconfirm --noprogressbar clang10 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang10 ;\
       export CC=clang-10; export CXX=clang++-10; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=10.0.1; export CXX_COMPILER_VERSION=10.0.1 ;;\
     "clang-13")\
-      trizen -S --needed --noconfirm --noprogressbar clang13 ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang13 ;\
       export CC=clang-13; export CXX=clang++-13; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=13.0.1; export CXX_COMPILER_VERSION=13.0.1 ;;\
     "clang-14")\
-      trizen -S --needed --noconfirm --noprogressbar clang ;\
+      sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang ;\
       export CC=clang-14; export CXX=clang++-14; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=14.0.6; export CXX_COMPILER_VERSION=14.0.6 ;;\
     *)\
       echo "No compliler provided !";\
@@ -124,4 +124,5 @@ RUN case $compiler in \
       fi;\
       rm -rf ./build ;\
     esac &&\
+    pacman -Rscn gcc &&\
     rm -rf ./tests
