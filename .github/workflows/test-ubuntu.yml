@@ -45,7 +45,7 @@ jobs:
         - gcc-11
         - gcc-12
 
-    container: ghcr.io/flagarde/ci-ubuntu-${{ matrix.image }}:main
+    container: ghcr.io/flagarde/ci-ubuntu-${{ matrix.image }}-x86_64:main
 
     steps:
 
