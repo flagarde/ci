@@ -46,7 +46,7 @@ rules:
     check-multi-line-strings: true
   key-duplicates: {}
   line-length:
-    max: 150
+    max: 250
   new-line-at-end-of-file: {}
   new-lines:
     type: unix
