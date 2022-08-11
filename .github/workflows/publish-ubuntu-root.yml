@@ -1,0 +1,92 @@
+---
+name: Ubuntu ROOT
+
+on:
+  push:
+    branches: [main]
+    paths:
+    - .github/workflows/publish-ubuntu-root.yml
+  pull_request:
+    paths:
+    - .github/workflows/publish-ubuntu-root.yml
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        version:
+        - gcc-4.4
+        - gcc-4.5
+        - gcc-4.6
+        - gcc-4.7
+        - gcc-4.8
+        - gcc-4.9
+        - gcc-5
+        - gcc-6
+        - gcc-7
+        - gcc-8
+        - gcc-9
+        - gcc-10
+        - gcc-11
+        - gcc-12
+        - clang-3.5
+        - clang-3.6
+        - clang-3.7
+        - clang-3.8
+        - clang-3.9
+        - clang-4
+        - clang-5
+        - clang-6
+        - clang-7
+        - clang-8
+        - clang-9
+        - clang-10
+        - clang-11
+        - clang-12
+        - clang-14
+        - clang-15
+        root:
+        - 6.02.12
+        - 6.04.18
+        - 6.06.08
+        - 6.08.06
+        - 6.10.08
+        - 6.12.06
+        - 6.14.06
+        - 6.16.00
+        - 6.18.04
+        - 6.20.08
+        - 6.22.08
+        - 6.24.06
+        - 6.26.06
+
+    container: ghcr.io/flagarde/ci-archlinux-${{ matrix.version }}:main
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup CMake
+      uses: jwlawson/actions-setup-cmake@v1.12
+      with:
+        cmake-version: 3.23.x
+        github-api-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Download ROOT v${{ matrix.root }}
+      run: |
+        wget -P ./root https://root.cern/download/root_v${{ matrix.root }}.source.tar.gz
+        tar -xf ./root/root_v${{ matrix.root }}.source.tar.gz -C ./root/
+
+    - name: 🔧 Configure
+      run: cmake -S ./root/root/ -B ./root/build -DCMAKE_BUILD_TYPE=Release ..
