@@ -185,3 +185,4 @@ RUN case $compiler in \
       rm -rf ./build ;\
     esac &&\
     rm -rf ./tests \
+ENTRYPOINT ['/bin/bash','-c','/etc/compiler.sh']
