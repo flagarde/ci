@@ -159,6 +159,7 @@ RUN case $compiler in \
     esac &&\
     echo "export CC=$CC" >> /etc/bash.bashrc &&\
     echo "export CXX=$CXX" >> /etc/bash.bashrc &&\
+    source /etc/bash.bashrc &&\
     apt-get upgrade; apt-get autoremove ; apt-get clean &&\
     echo "** make --version :" &&\
     make --version &&\
