@@ -16,7 +16,7 @@ RUN pacman-key --init &&\
     mv /var/user/trizen/PKGBUILD?h=trizen /var/user/trizen/PKGBUILD &&\
     sudo -S -u user -D /var/user/trizen bash -c "makepkg -s --noprogressbar --noconfirm --needed" &&\
     ls /var/user/trizen &&\
-    pacman --upgrade --needed --noconfirm --noprogressbar /var/user/trizen/trizen-1.66.tar.gz &&\
+    pacman --upgrade --needed --noconfirm --noprogressbar /var/user/trizen/trizen-1:1.66-1-any.pkg.tar.zst &&\
     rm -rf /var/user/trizen/
 
 FROM base AS compiler
