@@ -16,6 +16,9 @@ RUN pacman-key --init &&\
     mv /var/user/trizen/PKGBUILD?h=trizen /var/user/trizen/PKGBUILD &&\
     sudo -S -u user -D /var/user/trizen bash -c "makepkg -s --noprogressbar --noconfirm --needed" &&\
     pacman --upgrade --needed --noconfirm --noprogressbar /var/user/trizen/trizen-1:1.66-1-any.pkg.tar.zst &&\
+    gpg --recv-key 3AB00996FC26A641 ;\
+    gpg --recv-key 6C35B99309B5FA62 ;\
+    gpg --recv-key 8F0871F202119294 ;\
     rm -rf /var/user/trizen/
 
 FROM base AS compiler
@@ -56,15 +59,12 @@ RUN case $compiler in \
       sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc7 ;\
       export CC=gcc-7; export CXX=g++-7; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=7.5.0; export CXX_COMPILER_VERSION=7.5.0 ;;\
     "gcc-8")\
-      gpg --recv-key 6C35B99309B5FA62 ;\
       sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc8 ;\
       export CC=gcc-8; export CXX=g++-8; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=8.4.0; export CXX_COMPILER_VERSION=8.4.0 ;;\
     "gcc-9")\
-      gpg --recv-key 3AB00996FC26A641 ;\
       sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc9 ;\
       export CC=gcc-9; export CXX=g++-9; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=9.4.0; export CXX_COMPILER_VERSION=9.4.0 ;;\
     "gcc-10")\
-      gpg --recv-key 6C35B99309B5FA62 ;\
       sudo -S -u user trizen -S --needed --noconfirm --noprogressbar gcc10 ;\
       export CC=gcc-10; export CXX=g++-10; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=10.4.0; export CXX_COMPILER_VERSION=10.4.0 ;;\
     "gcc-11")\
@@ -77,7 +77,6 @@ RUN case $compiler in \
       sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang35 ;\
       export CC=clang-3.5; export CXX=clang++-3.5; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.5.2; export CXX_COMPILER_VERSION=3.5.2 ;;\
     "clang-4")\
-      gpg --recv-key 8F0871F202119294 ;\
       sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang40 ;\
       export CC=clang-4.0; export CXX=clang++-4.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=4.0.1; export CXX_COMPILER_VERSION=4.0.1 ;;\
     "clang-5")\
@@ -87,7 +86,6 @@ RUN case $compiler in \
       sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang70 ;\
       export CC=clang-7; export CXX=clang++-7; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=7.0.1; export CXX_COMPILER_VERSION=7.0.1 ;;\
     "clang-8")\
-      gpg --recv-key 6C35B99309B5FA62 ;\
       sudo -S -u user trizen -S --needed --noconfirm --noprogressbar clang8 ;\
       export CC=clang-8; export CXX=clang++-8; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=8.0.1; export CXX_COMPILER_VERSION=8.0.1 ;;\
     "clang-9")\
