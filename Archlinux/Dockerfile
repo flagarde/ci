@@ -110,7 +110,7 @@ RUN case $compiler in \
     echo "** CXX_COMPILER_ID=$CXX_COMPILER_ID, CXX_COMPILER_VERSION=$CXX_COMPILER_VERSION" &&\
     case $tests in \
     "true")\
-      ppacman --sync --noconfirm --noprogressbar cmake ;\
+      pacman --sync --noconfirm --noprogressbar cmake ;\
       cmake -B ./build -S ./tests ;\
       if [ $? -eq 0 ];\
         then exit 0;\
