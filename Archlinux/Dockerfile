@@ -15,7 +15,6 @@ RUN pacman-key --init &&\
     wget -q -P /var/user/trizen https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=trizen &&\
     mv /var/user/trizen/PKGBUILD?h=trizen /var/user/trizen/PKGBUILD &&\
     sudo -S -u user -D /var/user/trizen bash -c "makepkg -s --noprogressbar --noconfirm --needed" &&\
-    ls /var/user/trizen &&\
     pacman --upgrade --needed --noconfirm --noprogressbar /var/user/trizen/trizen-1:1.66-1-any.pkg.tar.zst &&\
     rm -rf /var/user/trizen/
 
