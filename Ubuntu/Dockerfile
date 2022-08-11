@@ -185,3 +185,4 @@ RUN case $compiler in \
       rm -rf ./build ;\
     esac &&\
     rm -rf ./tests
+CMD ["/bin/bash","-c","source /etc/bash.bashrc"]
