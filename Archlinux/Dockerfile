@@ -26,9 +26,7 @@ RUN pacman --noconfirm --noprogressbar -S gcc
 
 FROM compiler-base AS compiler
 SHELL ["/bin/bash","-o","pipefail","-c"]
-WORKDIR .
 COPY compilers ./compilers/
-WORKDIR .
 COPY tests ./tests/
 ARG compiler
 RUN sudo chown -R container ./compilers/ &&\
