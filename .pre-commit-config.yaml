@@ -73,7 +73,7 @@ repos:
   rev: v2.10.0
   hooks:
   - id: hadolint
-    args: [--ignore, DL3008, --ignore, DL3009, --ignore, DL3000, --ignore, DL3004, --ignore, SC2181]
+    args: [--ignore, DL3008, --ignore, DL3009, --ignore, DL3000, --ignore, DL3004, --ignore, SC2181, --ignore, DL3003]
 
 - repo: https://github.com/sirosen/check-jsonschema
   rev: 0.17.1
