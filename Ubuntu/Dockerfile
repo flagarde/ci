@@ -3,6 +3,14 @@ ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
 RUN case $compiler in \
+    "clang-3.9")\
+      apt-get update ;\
+      apt-get install --no-install-recommends -y gcc-7-base=7.5.0-3ubuntu1~18.04 ;\
+      apt-mark hold gcc-7-base ;;\
+    "clang-4")\
+      apt-get update ;\
+      apt-get install --no-install-recommends -y gcc-7-base=7.5.0-3ubuntu1~18.04 ;\
+      apt-mark hold gcc-7-base ;;\
     "clang-5")\
       apt-get update ;\
       apt-get install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
