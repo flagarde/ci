@@ -2,23 +2,25 @@ FROM ubuntu:20.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
-RUN case $compiler in \
+RUN apt-get update &&\
+    apt-get install --no-install-recommends -y wget gpg ca-certificates &&\
+    case $compiler in \
     "clang-3.9")\
-      echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+      wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0x15CF4D18AF4F7421&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/clang-3.9.gpg" > /dev/null ;\
+      echo "deb [signed-by=/usr/share/keyrings/clang-3.9.gpg] http://apt.llvm.org/trusty/ llvm-toolchain-trusty-3.9 main" | tee -a "/etc/apt/sources.list.d/llvm-3.9.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
-      apt-get update ;\
-      apt-get install --no-install-recommends -y libcilkrts5=7.5.0-3ubuntu1~18.04 libubsan0=7.5.0-3ubuntu1~18.04 libasan4=7.5.0-3ubuntu1~18.04 libstdc++-7-dev=7.5.0-3ubuntu1~18.04 libgcc-7-dev=7.5.0-3ubuntu1~18.04 libobjc-7-dev=7.5.0-3ubuntu1~18.04 gcc-7-base=7.5.0-3ubuntu1~18.04 ;\
-      apt-mark hold gcc-7-base libc6 libstdc++-7-dev libgcc-7-dev libobjc-7-dev libasan4 libubsan0 libcilkrts5 ;;\
+      apt-get update ;;\
     "clang-4")\
-      echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+      wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0x15CF4D18AF4F7421&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/clang-4.gpg" > /dev/null ;\
+      echo "deb [signed-by=/usr/share/keyrings/clang-4.gpg] http://apt.llvm.org/trusty/ llvm-toolchain-trusty-4 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
-      apt-get update ;\
-      apt-get install --no-install-recommends -y libcilkrts5=7.5.0-3ubuntu1~18.04 libubsan0=7.5.0-3ubuntu1~18.04 libasan4=7.5.0-3ubuntu1~18.04 libstdc++-7-dev=7.5.0-3ubuntu1~18.04 libgcc-7-dev=7.5.0-3ubuntu1~18.04 libobjc-7-dev=7.5.0-3ubuntu1~18.04 gcc-7-base=7.5.0-3ubuntu1~18.04 ;\
-      apt-mark hold gcc-7-base libstdc++-7-dev libgcc-7-dev libobjc-7-dev libasan4 libubsan0 libcilkrts5 ;;\
+      apt-get update ;;\
     "clang-5")\
       apt-get update ;\
       apt-get install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
@@ -39,19 +41,18 @@ RUN case $compiler in \
       echo "deb http://archive.ubuntu.com/ubuntu/ trusty main" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null ;\
-      echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null ;;\
+      echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null ;\
+      if [ ! -f "/etc/apt/sources.list.d/bionic.list" ]; then \
+        echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+        echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+      fi &&\
+      if [ ! -f "/etc/apt/sources.list.d/bionic-updates.list" ]; then \
+        echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
+        echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
+      fi ;;\
     esac &&\
-    if [ ! -f "/etc/apt/sources.list.d/bionic.list" ]; then \
-      echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
-      echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
-    fi &&\
-    if [ ! -f "/etc/apt/sources.list.d/bionic-updates.list" ]; then \
-      echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
-      echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
-    fi &&\
-    apt-get update &&\
-    apt-get install --no-install-recommends -y wget gpg ca-certificates &&\
     wget -q -O - "https://apt.llvm.org/llvm-snapshot.gpg.key" | gpg -q --dearmor - | tee "/usr/share/keyrings/llvm.gpg" >/dev/null &&\
+    echo "deb [signed-by=/usr/share/keyrings/clang-3.9.gpg] http://apt.llvm.org/trusty/ llvm-toolchain-trusty-4 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-9 main" | tee -a "/etc/apt/sources.list.d/llvm-9.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a "/etc/apt/sources.list.d/llvm-10.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main" | tee -a "/etc/apt/sources.list.d/llvm-11.list" >/dev/null &&\
