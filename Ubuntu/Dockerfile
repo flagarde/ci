@@ -4,10 +4,18 @@ SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
 RUN case $compiler in \
     "clang-3.9")\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
       apt-get update ;\
       apt-get install --no-install-recommends -y gcc-7-base=7.5.0-3ubuntu1~18.04 ;\
       apt-mark hold gcc-7-base ;;\
     "clang-4")\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
       apt-get update ;\
       apt-get install --no-install-recommends -y gcc-7-base=7.5.0-3ubuntu1~18.04 ;\
       apt-mark hold gcc-7-base ;;\
