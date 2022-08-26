@@ -53,19 +53,13 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install with apt-get
-      run: apt-get install --no-install-recommends -y git libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev
-        libbz2-dev
+      run: apt-get install --no-install-recommends -y python3
 
     - name: Setup CMake
       uses: jwlawson/actions-setup-cmake@v1.12
       with:
         cmake-version: 3.23.x
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Install Python, pipenv and Pipfile packages
-      uses: palewire/install-python-pipenv-pipfile@v2
-      with:
-        python-version: '3.10'
 
     - name: Install gcc-flags
       run: python -m pip install gcc-flags
