@@ -61,6 +61,14 @@ jobs:
         cmake-version: 3.23.x
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
+    - uses: actions/setup-python@v4
+      python-version:
+      cache: pip
+      run: pip install gcc-flags
+
+    - name: List warning flags for ${{ matrix.image }}
+      run: gcc_flags
+
     - name: 🔧 Configure
       run: cmake -S ./tests -B ./build -D CMAKE_BUILD_TYPE=Release
 
