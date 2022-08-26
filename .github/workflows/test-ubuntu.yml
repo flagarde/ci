@@ -68,7 +68,7 @@ jobs:
         python-version: 3.x
 
     - name: Install gcc-flags
-      run: python -m pip install gcc-flags
+      run: sudo -H python -m pip install gcc-flags
 
     - name: List warning flags for ${{ matrix.image }}
       run: gcc_flags
