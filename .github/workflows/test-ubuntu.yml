@@ -62,7 +62,7 @@ jobs:
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Install gcc-flags
-      run: python -m pip install gcc-flags
+      run: python3 -m pip install gcc-flags
 
     - name: List warning flags for ${{ matrix.image }}
       run: gcc_flags
