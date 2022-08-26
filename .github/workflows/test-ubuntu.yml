@@ -52,19 +52,22 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Install with apt-get
-      run: apt-get install --no-install-recommends -y git python3 python3-pip
-
     - name: Setup CMake
       uses: jwlawson/actions-setup-cmake@v1.12
       with:
         cmake-version: 3.23.x
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Install with apt-get
+      if: ${{ contains(matrix.image, 'gcc') }}
+      run: apt-get install --no-install-recommends -y python3-pip
+
     - name: Install gcc-flags
+      if: ${{ contains(matrix.image, 'gcc') }}
       run: python3 -m pip install gcc-flags
 
     - name: List warning flags for ${{ matrix.image }}
+      if: ${{ contains(matrix.image, 'gcc') }}
       run: gcc_flags
 
     - name: 🔧 Configure
