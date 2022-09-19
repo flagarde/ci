@@ -42,7 +42,7 @@ repos:
     args: [--markdown-linebreak-ext=md]
 
 - repo: https://github.com/adrienverge/yamllint.git
-  rev: v1.27.1
+  rev: v1.28.0
   hooks:
   - id: yamllint
     args: [--format, parsable]
@@ -54,12 +54,12 @@ repos:
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '150']
 
 - repo: https://github.com/commitizen-tools/commitizen
-  rev: v2.32.2
+  rev: v2.34.0
   hooks:
   - id: commitizen
 
 - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-  rev: 2.4.0
+  rev: 2.6.1
   hooks:
   - id: editorconfig-checker
     alias: ec
@@ -76,7 +76,7 @@ repos:
     args: [--ignore, DL3008, --ignore, DL3009, --ignore, DL3000, --ignore, DL3004, --ignore, SC2181, --ignore, DL3003]
 
 - repo: https://github.com/sirosen/check-jsonschema
-  rev: 0.17.1
+  rev: 0.18.3
   hooks:
   - id: check-github-workflows
 
