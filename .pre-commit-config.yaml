@@ -54,7 +54,7 @@ repos:
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '150']
 
 - repo: https://github.com/commitizen-tools/commitizen
-  rev: v2.34.0
+  rev: v2.35.0
   hooks:
   - id: commitizen
 
@@ -65,7 +65,7 @@ repos:
     alias: ec
 
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.2.1
+  rev: v2.2.2
   hooks:
   - id: codespell
 
