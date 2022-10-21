@@ -24,9 +24,10 @@ RUN case $compiler in \
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
-    echo "deb https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main" | tee -a "/etc/apt/sources.list.d/git.list" >/dev/null &&\
     apt-get update &&\
     apt-get install --no-install-recommends -y wget gpg ca-certificates &&\
+    wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0xE1DD270288B4E6030699E45FA1715D88E1DF1F24&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/git.gpg" > /dev/null &&\
+    echo "deb [signed-by=/usr/share/keyrings/git.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main" | tee -a "/etc/apt/sources.list.d/git.list" >/dev/null &&\
     wget -q -O - "https://apt.llvm.org/llvm-snapshot.gpg.key" | gpg -q --dearmor - | tee "/usr/share/keyrings/llvm.gpg" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-9 main" | tee -a "/etc/apt/sources.list.d/llvm-9.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a "/etc/apt/sources.list.d/llvm-10.list" >/dev/null &&\
