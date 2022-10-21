@@ -24,6 +24,7 @@ RUN case $compiler in \
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
+    echo "deb https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main" | tee -a "/etc/apt/sources.list.d/git.list" >/dev/null &&\
     apt-get update &&\
     apt-get install --no-install-recommends -y wget gpg ca-certificates &&\
     wget -q -O - "https://apt.llvm.org/llvm-snapshot.gpg.key" | gpg -q --dearmor - | tee "/usr/share/keyrings/llvm.gpg" >/dev/null &&\
