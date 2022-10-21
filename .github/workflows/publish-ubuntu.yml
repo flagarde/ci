@@ -78,7 +78,7 @@ jobs:
         images: ${{ env.REGISTRY }}/${{ github.repository }}-ubuntu-${{ matrix.version }}-x86_64
 
     - name: Build and test Docker image
-      uses: docker/build-push-action@v3.1.1
+      uses: docker/build-push-action@v3.2.0
       with:
         context: ./Ubuntu
         build-args: |
@@ -102,7 +102,7 @@ jobs:
         packages-to-fetch: 30
 
     - name: Build and push Docker image
-      uses: docker/build-push-action@v3.1.1
+      uses: docker/build-push-action@v3.2.0
       with:
         context: ./Ubuntu
         build-args: |
