@@ -1,3 +1,4 @@
+---
 name: Remove package versions
 
 on: push
