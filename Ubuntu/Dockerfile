@@ -22,9 +22,9 @@ RUN case $compiler in \
     echo "deb [signed-by=/usr/share/keyrings/git.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main" | tee -a "/etc/apt/sources.list.d/git.list" >/dev/null &&\
     wget -q -O - "https://apt.llvm.org/llvm-snapshot.gpg.key" | gpg -q --dearmor - | tee "/usr/share/keyrings/llvm.gpg" >/dev/null &&\
     "clang-3.9")\
-      echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3.9 main" | tee -a "/etc/apt/sources.list.d/llvm-3.9.list" >/dev/null ;\
+      echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3.9 main" | tee -a "/etc/apt/sources.list.d/llvm-3.9.list" >/dev/null ;;\
     "clang-4")\
-      echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null &&\
+      echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null ;;\
     *)\
       echo "deb http://archive.ubuntu.com/ubuntu/ jammy main" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ jammy universe" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null ;\
