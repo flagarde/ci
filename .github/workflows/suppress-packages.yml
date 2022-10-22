@@ -1,8 +1,6 @@
 name: Remove package
 
 on:
-  schedule:
-    - cron:  '0 8 * * *'
   push:
     branches: [main]
   pull_request:
