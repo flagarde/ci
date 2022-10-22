@@ -9,6 +9,6 @@ jobs:
     steps:
     - name: Remove package versions
       id: remove-package-versions
-      uses: epitomeglobal/remove-package-versions@master
+      uses: epitomeglobal/remove-package-versions@1.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
