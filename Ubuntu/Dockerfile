@@ -8,14 +8,6 @@ RUN case $compiler in \
       apt-get install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
       apt-mark hold gcc-10-base ;;\
     esac &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ jammy main" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ jammy universe" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates main" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates universe" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null &&\
@@ -29,8 +21,20 @@ RUN case $compiler in \
     wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0xE1DD270288B4E6030699E45FA1715D88E1DF1F24&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/git.gpg" > /dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/git.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main" | tee -a "/etc/apt/sources.list.d/git.list" >/dev/null &&\
     wget -q -O - "https://apt.llvm.org/llvm-snapshot.gpg.key" | gpg -q --dearmor - | tee "/usr/share/keyrings/llvm.gpg" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3.9 main" | tee -a "/etc/apt/sources.list.d/llvm-3.9.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null &&\
+    "clang-3.9")\
+      echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3.9 main" | tee -a "/etc/apt/sources.list.d/llvm-3.9.list" >/dev/null ;\
+    "clang-4")\
+      echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null &&\
+    *)\
+      echo "deb http://archive.ubuntu.com/ubuntu/ jammy main" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null ;\
+      echo "deb http://archive.ubuntu.com/ubuntu/ jammy universe" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null ;\
+      echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates main" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null ;\
+      echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates universe" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null ;\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
+      echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;;\
+    esac &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-9 main" | tee -a "/etc/apt/sources.list.d/llvm-9.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a "/etc/apt/sources.list.d/llvm-10.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main" | tee -a "/etc/apt/sources.list.d/llvm-11.list" >/dev/null &&\
