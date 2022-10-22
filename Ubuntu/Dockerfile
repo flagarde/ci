@@ -129,7 +129,7 @@ RUN case $compiler in \
       export CC=clang-3.9; export CXX=clang++-3.9; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.9.1; export CXX_COMPILER_VERSION=3.9.1 ;;\
     "clang-4")\
       apt-get install --no-install-recommends -y clang-4.0;\
-      export CC=clang-4.0; export CXX=clang++-4.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=4.0.1; export CXX_COMPILER_VERSION=4.0.1 ;;\
+      export CC=clang-4.0; export CXX=clang++-4.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=4.0.0; export CXX_COMPILER_VERSION=4.0.0 ;;\
     "clang-5")\
       apt-get install --no-install-recommends -y clang-5.0;\
       export CC=clang-5.0; export CXX=clang++-5.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=5.0.1; export CXX_COMPILER_VERSION=5.0.1 ;;\
