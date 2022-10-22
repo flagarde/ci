@@ -46,7 +46,7 @@ jobs:
     
     steps:
       - name: Delete packages
-      - uses: actions/delete-package-versions@v3
+        uses: actions/delete-package-versions@v3
         with:
           package-name: ci-ubuntu-${{ matrix.version }}-x86_64 
           min-versions-to-keep: 2
