@@ -102,7 +102,7 @@ RUN case $compiler in \
       export CC=gcc-11; export CXX=g++-11; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=11.2.0; export CXX_COMPILER_VERSION=11.2.0 ;;\
     "gcc-12")\
       apt-get install --no-install-recommends -y g++-12;\
-      export CC=gcc-12; export CXX=g++-12; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=12.0.1; export CXX_COMPILER_VERSION=12.0.1 ;;\
+      export CC=gcc-12; export CXX=g++-12; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=12.1.0; export CXX_COMPILER_VERSION=12.1.0 ;;\
     "clang-3.5")\
       apt-get install --no-install-recommends -y clang-3.5;\
       export CC=clang-3.5; export CXX=clang++-3.5; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.5.2; export CXX_COMPILER_VERSION=3.5.2 ;;\
@@ -153,7 +153,7 @@ RUN case $compiler in \
       export CC=clang-14; export CXX=clang++-14; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=14.0.6; export CXX_COMPILER_VERSION=14.0.6 ;;\
     "clang-15")\
       apt-get install --no-install-recommends -y clang-15 libc++1-15;\
-      export CC=clang-15; export CXX=clang++-15; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=15.0.0; export CXX_COMPILER_VERSION=15.0.0 ;;\
+      export CC=clang-15; export CXX=clang++-15; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=15.0.3; export CXX_COMPILER_VERSION=15.0.3 ;;\
     *)\
       echo "No compliler provided !";\
       echo "GCC Available : gcc-4.4, gcc-4.5, gcc-4.6, gcc-4.7, gcc-4.8, gcc-4.9, gcc-5, gcc-6, gcc-7, gcc-8, gcc-9, gcc-10, gcc-11, gcc-12";\
