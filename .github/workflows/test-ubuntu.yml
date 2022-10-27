@@ -4,7 +4,9 @@ name: Test Docker image based on Ubuntu
 on:
   push:
     branches: [main]
-  workflow_dispatch:
+  workflow_dispatch: ''
+  schedule:
+  - cron: 1 0 * * *
 
 jobs:
   test-image:
