@@ -105,10 +105,10 @@ RUN case $compiler in \
       export CC=gcc-9; export CXX=g++-9; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=9.4.0; export CXX_COMPILER_VERSION=9.4.0 ;;\
     "gcc-10")\
       apt-get install --no-install-recommends -y g++-10;\
-      export CC=gcc-10; export CXX=g++-10; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=10.3.0; export CXX_COMPILER_VERSION=10.3.0 ;;\
+      export CC=gcc-10; export CXX=g++-10; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=10.4.0; export CXX_COMPILER_VERSION=10.4.0 ;;\
     "gcc-11")\
       apt-get install --no-install-recommends -y g++-11;\
-      export CC=gcc-11; export CXX=g++-11; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=11.2.0; export CXX_COMPILER_VERSION=11.2.0 ;;\
+      export CC=gcc-11; export CXX=g++-11; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=11.3.0; export CXX_COMPILER_VERSION=11.3.0 ;;\
     "gcc-12")\
       apt-get install --no-install-recommends -y g++-12;\
       export CC=gcc-12; export CXX=g++-12; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=12.1.0; export CXX_COMPILER_VERSION=12.1.0 ;;\
