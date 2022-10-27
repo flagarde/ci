@@ -98,11 +98,7 @@ RUN case $compiler in \
       export CC=gcc-8; export CXX=g++-8; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=8.4.0; export CXX_COMPILER_VERSION=8.4.0 ;;\
     "gcc-9")\
       apt-get install --no-install-recommends -y g++-9;\
-      mkdir -p /root/gcc/9/include/c++ ;\
-      ln -s /usr/include/c++/9 /root/gcc/9/include/c++/9 ;\
-      mkdir -p /root/gcc/9/lib/gcc/x86_64-unknown-linux-gnu ;\
-      ln -s /usr/lib/gcc/x86_64-linux-gnu/9 /root/gcc/9/lib/gcc/x86_64-unknown-linux-gnu/9 ;\
-      export CC=gcc-9; export CXX=g++-9; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=9.4.0; export CXX_COMPILER_VERSION=9.4.0 ;;\
+      export CC=gcc-9; export CXX=g++-9; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=9.5.0; export CXX_COMPILER_VERSION=9.5.0 ;;\
     "gcc-10")\
       apt-get install --no-install-recommends -y g++-10;\
       export CC=gcc-10; export CXX=g++-10; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=10.4.0; export CXX_COMPILER_VERSION=10.4.0 ;;\
