@@ -12,6 +12,8 @@ on:
     - Ubuntu/**
     - .github/workflows/publish-ubuntu.yml
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
 
 env:
   REGISTRY: ghcr.io
