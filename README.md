@@ -39,6 +39,6 @@
 |   gcc-7   |  **7.5.0**  |            |
 |   gcc-8   |  **8.4.0**  | to update  |
 |   gcc-9   |  **9.4.0**  | to update  |
-|  gcc-10   | **10.3.0**  | to update  |
-|  gcc-11   | **11.2.0**  | to update  |
+|  gcc-10   | **10.4.0**  | to update  |
+|  gcc-11   | **11.3.0**  | to update  |
 |  gcc-12   | **12.1.0**  | to update  |
