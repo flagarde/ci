@@ -5,16 +5,30 @@ on:
   workflow_dispatch:
 
 jobs:
-  remove-package-versions:
+  remove-package-versions-gcc:
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 6, 7, 8, 9, 10, 11, 12]
     runs-on: ubuntu-latest
     steps:
       - name: Remove package versions
         id: remove-package-versions
-        uses: epitomeglobal/remove-package-versions@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/delete-package-versions@v3
         with:
-          keep-versions: 1
-          remove-semver: true
-          keep-prerelease-versions: 0
-          remove-prerelease-semver: true
+          package-name: '${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64'
+          min-versions-to-keep: 1
+          
+  remove-package-versions-clang:
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [3.5, 3.6, 3.7, 3.8, 3.9, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remove package versions
+        id: remove-package-versions
+        uses: actions/delete-package-versions@v3
+        with:
+          package-name: '${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64'
+          min-versions-to-keep: 1
