@@ -14,10 +14,12 @@ jobs:
     steps:
       - name: Remove package versions
         id: remove-package-versions
-        uses: actions/delete-package-versions@v3
+        uses: smartsquaregmbh/delete-old-packages@v0.6.0
         with:
-          package-name: '${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64'
-          min-versions-to-keep: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+          type: container
+          names: '${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64'
+          keep: 1
           
   remove-package-versions-clang:
     strategy:
@@ -28,7 +30,9 @@ jobs:
     steps:
       - name: Remove package versions
         id: remove-package-versions
-        uses: actions/delete-package-versions@v3
+        uses: smartsquaregmbh/delete-old-packages@v0.6.0
         with:
-          package-name: '${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64'
-          min-versions-to-keep: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+          type: container
+          names: '${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64'
+          keep: 1
