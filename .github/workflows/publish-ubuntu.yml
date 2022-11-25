@@ -47,40 +47,16 @@ jobs:
       with:
         images: ${{ env.REGISTRY }}/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64
 
-    - name: Build and test Docker image
-      uses: docker/build-push-action@v3.2.0
-      with:
-        context: ./Ubuntu
-        build-args: |
-          compiler=gcc-${{ matrix.version }}
-          tests=true
-        push: false
-        file: ./Ubuntu/Dockerfile
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-
-    - name: Clean up old package versions
-      id: clean-up-old-package-versions
-      uses: stripethree/gpr-janitor@dist
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        IMAGE_NAME: ${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64
-      with:
-        dry-run: false
-        keep-versions: 1
-        min-age-days: 0
-        packages-to-fetch: 30
-
     - name: Build and push Docker image
       uses: docker/build-push-action@v3.2.0
       with:
         context: ./Ubuntu
         build-args: |
           compiler=gcc-${{ matrix.version }}
-        push: true
+        push: ${{ github.event_name != 'pull_request' }}
         file: ./Ubuntu/Dockerfile
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+        tags: latest
+        labels: latest
 
   clang:
     runs-on: ubuntu-latest
@@ -111,37 +87,13 @@ jobs:
       with:
         images: ${{ env.REGISTRY }}/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64
 
-    - name: Build and test Docker image
-      uses: docker/build-push-action@v3.2.0
-      with:
-        context: ./Ubuntu
-        build-args: |
-          compiler=clang-${{ matrix.version }}
-          tests=true
-        push: false
-        file: ./Ubuntu/Dockerfile
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-
-    - name: Clean up old package versions
-      id: clean-up-old-package-versions
-      uses: stripethree/gpr-janitor@dist
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        IMAGE_NAME: ${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64
-      with:
-        dry-run: false
-        keep-versions: 1
-        min-age-days: 0
-        packages-to-fetch: 30
-
     - name: Build and push Docker image
       uses: docker/build-push-action@v3.2.0
       with:
         context: ./Ubuntu
         build-args: |
           compiler=clang-${{ matrix.version }}
-        push: true
+        push: ${{ github.event_name != 'pull_request' }}
         file: ./Ubuntu/Dockerfile
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+        tags: latest
+        labels: latest
