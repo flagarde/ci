@@ -36,7 +36,7 @@ rules:
     max-start: 0
     max-end: 1
   empty-values:
-    forbid-in-block-mappings: true
+    forbid-in-block-mappings: false
     forbid-in-flow-mappings: true
   hyphens:
     max-spaces-after: 1
@@ -57,4 +57,3 @@ rules:
     quote-type: single
     required: only-when-needed
   trailing-spaces: {}
-  empty-values: disable
