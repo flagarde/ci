@@ -57,3 +57,4 @@ rules:
     quote-type: single
     required: only-when-needed
   trailing-spaces: {}
+  empty-values: disable
