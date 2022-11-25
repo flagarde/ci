@@ -55,8 +55,8 @@ jobs:
           compiler=gcc-${{ matrix.version }}
         push: ${{ github.event_name != 'pull_request' }}
         file: ./Ubuntu/Dockerfile
-        tags: latest
-        labels: latest
+        tags: v1, latest
+        labels: ${{ steps.meta.outputs.labels }}
 
   clang:
     runs-on: ubuntu-latest
@@ -95,5 +95,5 @@ jobs:
           compiler=clang-${{ matrix.version }}
         push: ${{ github.event_name != 'pull_request' }}
         file: ./Ubuntu/Dockerfile
-        tags: latest
-        labels: latest
+        tags: v1, latest
+        labels: ${{ steps.meta.outputs.labels }}
