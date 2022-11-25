@@ -48,7 +48,7 @@ jobs:
         - gcc-11
         - gcc-12
 
-    container: ghcr.io/flagarde/ci-ubuntu-${{ matrix.image }}-x86_64:main
+    container: ghcr.io/flagarde/ci-ubuntu-${{ matrix.image }}-x86_64:latest
 
     steps:
 
@@ -58,7 +58,7 @@ jobs:
     - name: Setup CMake
       uses: jwlawson/actions-setup-cmake@v1.13
       with:
-        cmake-version: 3.23.x
+        cmake-version: 3.25.x
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Install with apt-get
