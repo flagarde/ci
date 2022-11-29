@@ -92,7 +92,7 @@ jobs:
     - name: 📥 Checkout
       uses: actions/checkout@v3
     - name: 🔑 Log in to ghcr.io
-      uses: docker/login-action@v2.1.clang0
+      uses: docker/login-action@v2.1.0
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
