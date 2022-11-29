@@ -130,7 +130,7 @@ jobs:
       with:
         context: ./Ubuntu
         build-args: |
-          compiler=gcc-${{ matrix.version }}
+          compiler=clang-${{ matrix.version }}
         push: ${{ github.event_name != 'pull_request' }}
         file: ./Ubuntu/Dockerfile
         tags: ${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
