@@ -14,29 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  login:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-    - name: 🔑 Log in to ghcr.io
-      uses: docker/login-action@v2.1.0
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        logout: false
-        
-    - name: 🔑 Log in to the hub.docker
-      uses: docker/login-action@v2.1.0
-      with:
-        username: ${{ github.actor }}
-        password: ${{ secrets.HUB_DOCKER }}
-        logout: false
-
   gcc:
-    needs: login
     runs-on: ubuntu-latest
     name: gcc-${{ matrix.version }}
 
@@ -52,13 +30,18 @@ jobs:
     steps:
     - name: 📥 Checkout
       uses: actions/checkout@v3
-
+    - name: 🔑 Log in to ghcr.io
+      uses: docker/login-action@v2.1.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        logout: false
     - name: 📤 Extract metadata from ghcr.io
       id: ghcr
       uses: docker/metadata-action@v4.1.1
       with:
         images: ghcr.io/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64
-
     - name: ⚙️ Build and push image
       uses: docker/build-push-action@v3.2.0
       with:
@@ -67,11 +50,32 @@ jobs:
           compiler=gcc-${{ matrix.version }}
         push: ${{ github.event_name != 'pull_request' }}
         file: ./Ubuntu/Dockerfile
-        tags: ghcr.io/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest,${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest
+        tags: ghcr.io/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest
         labels: ${{ steps.ghcr.outputs.labels }}
 
+    - name: 🔑 Log in to the hub.docker
+      uses: docker/login-action@v2.1.0
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.HUB_DOCKER }}
+        logout: false
+    - name: 📤 Extract metadata from ghcr.io
+      id: hub
+      uses: docker/metadata-action@v4.1.1
+      with:
+        images: ghcr.io/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64        
+    - name: ⚙️ Build and push image
+      uses: docker/build-push-action@v3.2.0
+      with:
+        context: ./Ubuntu
+        build-args: |
+          compiler=gcc-${{ matrix.version }}
+        push: ${{ github.event_name != 'pull_request' }}
+        file: ./Ubuntu/Dockerfile
+        tags: ${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest
+        labels: ${{ steps.hub.outputs.labels }}
+        
   clang:
-    needs: login
     runs-on: ubuntu-latest
     name: clang-${{ matrix.version }}
 
@@ -87,20 +91,47 @@ jobs:
     steps:
     - name: 📥 Checkout
       uses: actions/checkout@v3
-
+    - name: 🔑 Log in to ghcr.io
+      uses: docker/login-action@v2.1.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        logout: false
     - name: 📤 Extract metadata from ghcr.io
       id: ghcr
       uses: docker/metadata-action@v4.1.1
       with:
         images: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64
-
     - name: ⚙️ Build and push image
       uses: docker/build-push-action@v3.2.0
       with:
         context: ./Ubuntu
         build-args: |
-          compiler=clang-${{ matrix.version }}
+          compiler=gcc-${{ matrix.version }}
         push: ${{ github.event_name != 'pull_request' }}
         file: ./Ubuntu/Dockerfile
-        tags: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest,${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
+        tags: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
         labels: ${{ steps.ghcr.outputs.labels }}
+
+    - name: 🔑 Log in to the hub.docker
+      uses: docker/login-action@v2.1.0
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.HUB_DOCKER }}
+        logout: false
+    - name: 📤 Extract metadata from ghcr.io
+      id: hub
+      uses: docker/metadata-action@v4.1.1
+      with:
+        images: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64        
+    - name: ⚙️ Build and push image
+      uses: docker/build-push-action@v3.2.0
+      with:
+        context: ./Ubuntu
+        build-args: |
+          compiler=gcc-${{ matrix.version }}
+        push: ${{ github.event_name != 'pull_request' }}
+        file: ./Ubuntu/Dockerfile
+        tags: ${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
+        labels: ${{ steps.hub.outputs.labels }}
