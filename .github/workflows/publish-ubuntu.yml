@@ -57,7 +57,7 @@ jobs:
           compiler=gcc-${{ matrix.version }}
         push: ${{ github.event_name != 'pull_request' }}
         file: ./Ubuntu/Dockerfile
-        tags: ghcr.io/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest,flagarde/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest
+        tags: ghcr.io/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest,${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest
         labels: ${{ steps.ghcr.outputs.labels }}
 
   clang:
