@@ -10,7 +10,7 @@ on:
 
 jobs:
   test-image:
-
+    name: ${{ matrix.image }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
