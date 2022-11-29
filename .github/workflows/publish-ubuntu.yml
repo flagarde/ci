@@ -132,7 +132,7 @@ jobs:
       id: docker
       uses: docker/metadata-action@v4.1.1
       with:
-        images: flagarde/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64
+        images: ${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64
 
     - name: Build and push Docker image to hub.docker
       uses: docker/build-push-action@v3.2.0
@@ -142,5 +142,5 @@ jobs:
           compiler=gcc-${{ matrix.version }}
         push: ${{ github.event_name != 'pull_request' }}
         file: ./Ubuntu/Dockerfile
-        tags: flagarde/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
+        tags: ${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
         labels: ${{ steps.docker.outputs.labels }}  
