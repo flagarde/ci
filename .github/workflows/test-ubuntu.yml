@@ -55,11 +55,9 @@ jobs:
     - name: 📥 Checkout
       uses: actions/checkout@v3
 
-    - name: ✨ Setup CMake
-      uses: jwlawson/actions-setup-cmake@v1.13
-      with:
-        cmake-version: 3.25.x
-        github-api-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: ⬇️ Install CMake
+      if: ${{ contains(matrix.image, 'gcc') }}
+      run: apt-get install --no-install-recommends -y cmake
 
     - name: ⬇️ Install with apt-get
       if: ${{ contains(matrix.image, 'gcc') }}
