@@ -69,6 +69,10 @@ jobs:
     - name: 📝 List warning flags for ${{ matrix.image }}
       if: ${{ contains(matrix.image, 'gcc') }}
       run: gcc_flags
+      
+    - name: 📝 List warning flags activated for ${{ matrix.image }}
+      if: ${{ contains(matrix.image, 'gcc') }}
+      run: gcc -Wall -Wextra -Wpedantic -Q --help=warning
 
     - name: 🔧 Configure
       run: cmake -S ./tests -B ./build -D CMAKE_BUILD_TYPE=Release
