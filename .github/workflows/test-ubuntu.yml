@@ -69,7 +69,7 @@ jobs:
     - name: 📝 List warning flags for ${{ matrix.image }}
       if: ${{ contains(matrix.image, 'gcc') }}
       run: gcc_flags
-      
+
     - name: 📝 List warning flags activated for ${{ matrix.image }}
       if: ${{ contains(matrix.image, 'gcc') }}
       run: gcc -Wall -Wextra --pedantic -Q --help=warning
