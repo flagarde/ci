@@ -39,7 +39,7 @@ jobs:
         logout: false
     - name: 📤 Extract metadata from ghcr.io
       id: ghcr
-      uses: docker/metadata-action@v4.2.0
+      uses: docker/metadata-action@v4.3.0
       with:
         images: ghcr.io/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest
     - name: ⚙️ Build and push image
@@ -61,7 +61,7 @@ jobs:
         logout: false
     - name: 📤 Extract metadata from ghcr.io
       id: hub
-      uses: docker/metadata-action@v4.2.0
+      uses: docker/metadata-action@v4.3.0
       with:
         images: ghcr.io/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest
     - name: ⚙️ Build and push image
@@ -100,7 +100,7 @@ jobs:
         logout: false
     - name: 📤 Extract metadata from ghcr.io
       id: ghcr
-      uses: docker/metadata-action@v4.2.0
+      uses: docker/metadata-action@v4.3.0
       with:
         images: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
     - name: ⚙️ Build and push image
@@ -122,7 +122,7 @@ jobs:
         logout: false
     - name: 📤 Extract metadata from ghcr.io
       id: hub
-      uses: docker/metadata-action@v4.2.0
+      uses: docker/metadata-action@v4.3.0
       with:
         images: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
     - name: ⚙️ Build and push image
