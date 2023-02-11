@@ -56,8 +56,8 @@ RUN case $compiler in \
     echo "deb [signed-by=/usr/share/keyrings/toolchains.gpg] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null &&\
     apt-get update &&\
     apt-get install --no-install-recommends -y binutils make &&\
-    apt-get purge --auto-remove -y wget gpg ca-certificates perl-base &&\
-    apt-get upgrade -y ; apt-get autoremove -y ; apt-get clean -y
+    apt-get purge --auto-remove --allow-remove-essential -y wget gpg ca-certificates perl-base &&\
+    apt-get upgrade -y ; apt-get clean -y
 
 FROM base AS compiler
 ARG compiler
