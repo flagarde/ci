@@ -57,8 +57,7 @@ RUN case $compiler in \
     apt-get update &&\
     apt-get install --no-install-recommends -y binutils make &&\
     apt-get remove -y wget gpg &&\
-    do-release-upgrade -c  &&\
-    apt-get dist-upgrade -y; apt-get autoremove -y; apt-get clean -y
+    apt-get dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y
 
 FROM base AS compiler
 ARG compiler
@@ -174,7 +173,7 @@ RUN case $compiler in \
       ln -s /usr/bin/$CC /usr/bin/clang ;\
       ln -s /usr/bin/$CXX /usr/bin/clang++ ;;\
     esac &&\
-    apt-get upgrade; apt-get autoremove ; apt-get clean &&\
+    apt-get upgrade; apt-get autoremove -y ; apt-get clean -y &&\
     echo "** make --version :" &&\
     make --version &&\
     echo "** CC --version :" &&\
