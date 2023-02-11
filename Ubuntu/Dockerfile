@@ -57,6 +57,7 @@ RUN case $compiler in \
     apt-get update &&\
     apt-get install --no-install-recommends -y binutils make &&\
     apt-get remove -y wget gpg &&\
+    do-release-upgrade -c  &&\
     apt-get dist-upgrade -y; apt-get autoremove -y; apt-get clean -y
 
 FROM base AS compiler
