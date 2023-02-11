@@ -55,7 +55,7 @@ RUN case $compiler in \
     echo "deb [signed-by=/usr/share/keyrings/toolchains.gpg] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/toolchains.gpg] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null &&\
     apt-get update &&\
-    apt-get install --no-install-recommends -y binutils make &&\
+    apt-get install --no-install-recommends -y binutils make
 
 FROM base AS compiler
 ARG compiler
