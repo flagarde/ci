@@ -195,4 +195,5 @@ RUN case $compiler in \
       fi;\
       rm -rf ./build ;\
     esac &&\
+    apt-get purge --auto-remove -y wget gpg &&\
     rm -rf ./tests \
