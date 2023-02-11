@@ -57,7 +57,7 @@ RUN case $compiler in \
     apt-get update &&\
     apt-get install --no-install-recommends -y binutils make &&\
     apt-get remove -y wget gpg ca-certificates &&\
-    apt-get upgrade; apt-get autoremove ; apt-get clean
+    apt-get upgrade -y ; apt-get autoremove -y ; apt-get clean -y
 
 FROM base AS compiler
 ARG compiler
