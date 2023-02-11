@@ -55,9 +55,9 @@ RUN case $compiler in \
     echo "deb [signed-by=/usr/share/keyrings/toolchains.gpg] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/toolchains.gpg] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null &&\
     apt-get update &&\
-    apt-get install --no-install-recommends -y binutils make  &&\
-    apt-get purge --auto-remove -y wget gpg &&\
-    apt-get upgrade -y ; apt-get clean -y
+    apt-get install --no-install-recommends -y binutils make &&\
+    apt-get remove -y wget gpg &&\
+    apt-get upgrade; apt-get autoremove ; apt-get clean
 
 FROM base AS compiler
 ARG compiler
@@ -173,7 +173,7 @@ RUN case $compiler in \
       ln -s /usr/bin/$CC /usr/bin/clang ;\
       ln -s /usr/bin/$CXX /usr/bin/clang++ ;;\
     esac &&\
-    apt-get upgrade -y ; apt-get clean -y
+    apt-get upgrade; apt-get autoremove ; apt-get clean &&\
     echo "** make --version :" &&\
     make --version &&\
     echo "** CC --version :" &&\
