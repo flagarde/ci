@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS base
+FROM ubuntu:20.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
@@ -57,7 +57,7 @@ RUN case $compiler in \
     apt-get update &&\
     apt-get install --no-install-recommends -y binutils make &&\
     apt-get remove -y wget gpg &&\
-    apt-get upgrade; apt-get autoremove ; apt-get clean
+    apt-get dist-upgrade -y; apt-get autoremove -y; apt-get clean -y
 
 FROM base AS compiler
 ARG compiler
