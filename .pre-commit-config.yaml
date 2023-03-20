@@ -65,7 +65,7 @@ repos:
     alias: ec
 
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.2.2
+  rev: v2.2.4
   hooks:
   - id: codespell
 
@@ -76,7 +76,7 @@ repos:
     args: [--ignore, DL3008, --ignore, DL3009, --ignore, DL3000, --ignore, DL3004, --ignore, SC2181, --ignore, DL3003, --ignore, SC2317]
 
 - repo: https://github.com/sirosen/check-jsonschema
-  rev: 0.21.0
+  rev: 0.22.0
   hooks:
   - id: check-github-workflows
 
