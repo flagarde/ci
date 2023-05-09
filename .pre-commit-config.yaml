@@ -48,13 +48,13 @@ repos:
     args: [--format, parsable]
 
 - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-  rev: 0.2.2
+  rev: 0.2.3
   hooks:
   - id: yamlfmt
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '150']
 
 - repo: https://github.com/commitizen-tools/commitizen
-  rev: 3.2.0
+  rev: 3.2.1
   hooks:
   - id: commitizen
 
@@ -76,7 +76,7 @@ repos:
     args: [--ignore, DL3008, --ignore, DL3009, --ignore, DL3000, --ignore, DL3004, --ignore, SC2181, --ignore, DL3003, --ignore, SC2317, --ignore, DL3005]
 
 - repo: https://github.com/sirosen/check-jsonschema
-  rev: 0.22.0
+  rev: 0.23.0
   hooks:
   - id: check-github-workflows
 
