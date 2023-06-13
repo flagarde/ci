@@ -43,7 +43,7 @@ jobs:
       with:
         images: ghcr.io/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest
     - name: ⚙️ Build and push image
-      uses: docker/build-push-action@v4.1.0
+      uses: docker/build-push-action@v4.1.1
       with:
         context: ./Ubuntu
         build-args: |
@@ -65,7 +65,7 @@ jobs:
       with:
         images: ghcr.io/${{ github.repository }}-ubuntu-gcc-${{ matrix.version }}-x86_64:latest
     - name: ⚙️ Build and push image
-      uses: docker/build-push-action@v4.1.0
+      uses: docker/build-push-action@v4.1.1
       with:
         context: ./Ubuntu
         build-args: |
@@ -104,7 +104,7 @@ jobs:
       with:
         images: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
     - name: ⚙️ Build and push image
-      uses: docker/build-push-action@v4.1.0
+      uses: docker/build-push-action@v4.1.1
       with:
         context: ./Ubuntu
         build-args: |
@@ -126,7 +126,7 @@ jobs:
       with:
         images: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
     - name: ⚙️ Build and push image
-      uses: docker/build-push-action@v4.1.0
+      uses: docker/build-push-action@v4.1.1
       with:
         context: ./Ubuntu
         build-args: |
