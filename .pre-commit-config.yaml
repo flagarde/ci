@@ -54,7 +54,7 @@ repos:
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '150']
 
 - repo: https://github.com/commitizen-tools/commitizen
-  rev: 3.5.3
+  rev: 3.7.0
   hooks:
   - id: commitizen
 
@@ -76,7 +76,7 @@ repos:
     args: [--ignore, DL3008, --ignore, DL3009, --ignore, DL3000, --ignore, DL3004, --ignore, SC2181, --ignore, DL3003, --ignore, SC2317, --ignore, DL3005]
 
 - repo: https://github.com/sirosen/check-jsonschema
-  rev: 0.23.3
+  rev: 0.26.3
   hooks:
   - id: check-github-workflows
 
