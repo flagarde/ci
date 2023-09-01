@@ -7,6 +7,14 @@ RUN case $compiler in \
       apt-get update ;\
       apt-get install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
       apt-mark hold gcc-10-base ;;\
+    "clang-7")\
+      apt-get update ;\
+      apt-get install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
+      apt-mark hold gcc-10-base ;;\
+    "clang-8")\
+      apt-get update ;\
+      apt-get install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
+      apt-mark hold gcc-10-base ;;\
     esac &&\
     apt-mark hold libsystemd0 &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
