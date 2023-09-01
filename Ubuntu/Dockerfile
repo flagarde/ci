@@ -146,7 +146,7 @@ RUN case $compiler in \
       export CC=clang-6.0; export CXX=clang++-6.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=6.0.1; export CXX_COMPILER_VERSION=6.0.1 ;;\
     "clang-7")\
       apt-get install --no-install-recommends -y clang-7 libc++1-7;\
-      export CC=clang-7; export CXX=clang++-7; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=7.0.1; export CXX_COMPILER_VERSION=7.0.1 ;;\
+      export CC=clang-7; export CXX=clang++-7; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=7.1.0; export CXX_COMPILER_VERSION=7.1.0 ;;\
     "clang-8")\
       apt-get install --no-install-recommends -y clang-8 libc++1-8;\
       export CC=clang-8; export CXX=clang++-8; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=8.0.1; export CXX_COMPILER_VERSION=8.0.1 ;;\
