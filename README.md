@@ -10,11 +10,11 @@
 | clang-3.6  |  **3.6.2**  |           |
 | clang-3.7  |  **3.7.1**  |           |
 | clang-3.8  |  **3.8.0**  | to update |
-| clang-3.9  |  **3.9.1**  |  broken   |
-|  clang-4   |  **4.0.0**  |  broken   |
+| clang-3.9  |  **3.9.1**  |           |
+|  clang-4   |  **4.0.0**  |           |
 |  clang-5   |  **5.0.1**  | to update |
 |  clang-6   |  **6.0.1**  |           |
-|  clang-7   |  **7.0.1**  | to update?|
+|  clang-7   |  **7.1.0**  |           |
 |  clang-8   |  **8.0.1**  |           |
 |  clang-9   |  **9.0.1**  |           |
 |  clang-10  | **10.0.1**  |           |
