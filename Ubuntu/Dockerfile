@@ -56,6 +56,7 @@ RUN case $compiler in \
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main" | tee -a "/etc/apt/sources.list.d/llvm-13.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main" | tee -a "/etc/apt/sources.list.d/llvm-14.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-15 main" | tee -a "/etc/apt/sources.list.d/llvm-15.list" >/dev/null &&\
+    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-16 main" | tee -a "/etc/apt/sources.list.d/llvm-16.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal main" | tee -a "/etc/apt/sources.list.d/llvm.list" >/dev/null &&\
     wget -q -O - "https://apt.kitware.com/keys/kitware-archive-latest.asc" | gpg -q --dearmor - | tee "/usr/share/keyrings/kitware.gpg" >/dev/null &&\
     echo 'deb [trusted=yes] https://apt.kitware.com/ubuntu/ focal main' | tee "/etc/apt/sources.list.d/kitware.list" >/dev/null &&\
