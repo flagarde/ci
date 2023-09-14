@@ -78,7 +78,7 @@ jobs:
       run: gcc -Wall -Wextra --pedantic -Q --help=warning
 
     - name: 🔧 Configure
-      run: cmake -S ./tests -B ./build -D CMAKE_BUILD_TYPE=Release
+      run: cmake -S ./Ubuntu/tests -B ./build -D CMAKE_BUILD_TYPE=Release
 
     - name: ⚙️ Build
       run: cmake --build ./build --config Release --parallel 2
