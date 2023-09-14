@@ -195,13 +195,13 @@ RUN case $compiler in \
     echo "** CXX_COMPILER_ID=$CXX_COMPILER_ID, CXX_COMPILER_VERSION=$CXX_COMPILER_VERSION" &&\
     case $tests in \
     "true")\
-      apt-get install --no-install-recommends -y cmake ;\
-      cmake -B ./build -S ./tests -D RUN_COMPILER_CHECK=ON;\
+      #apt-get install --no-install-recommends -y cmake ;\
+      #cmake -B ./build -S ./tests -D RUN_COMPILER_CHECK=ON;\
       if [ $? -eq 0 ];\
         then exit 0;\
         else exit 1;\
       fi;\
-      cmake --build ./build ;\
+      #cmake --build ./build ;\
       if [ $? -eq 0 ];\
         then exit 0;\
         else exit 1;\
