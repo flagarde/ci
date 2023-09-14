@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS base
+FROM ubuntu:20.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
@@ -171,10 +171,13 @@ RUN case $compiler in \
     "clang-15")\
       apt-get install --no-install-recommends -y clang-15 libc++1-15;\
       export CC=clang-15; export CXX=clang++-15; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=15.0.6; export CXX_COMPILER_VERSION=15.0.6 ;;\
+    "clang-16")\
+      apt-get install --no-install-recommends -y clang-16 libc++1-16;\
+      export CC=clang-16; export CXX=clang++-16; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=16.0.0; export CXX_COMPILER_VERSION=16.0.0 ;;\
     *)\
       echo "No compiler provided !";\
       echo "GCC Available : gcc-4.4, gcc-4.5, gcc-4.6, gcc-4.7, gcc-4.8, gcc-4.9, gcc-5, gcc-6, gcc-7, gcc-8, gcc-9, gcc-10, gcc-11, gcc-12";\
-      echo "Clang Available : clang-3.5, clang-3.6, clang-3.7, clang-3.8, clang-3.9, clang-4, clang-5, clang-6, clang-7, clang-8, clang-9, clang-10, clang-11, clang-12, clang-13, clang-14, clang-15";;\
+      echo "Clang Available : clang-3.5, clang-3.6, clang-3.7, clang-3.8, clang-3.9, clang-4, clang-5, clang-6, clang-7, clang-8, clang-9, clang-10, clang-11, clang-12, clang-13, clang-14, clang-15 clang-16";;\
     esac &&\
     case $C_COMPILER_ID in \
     "GNU")\
