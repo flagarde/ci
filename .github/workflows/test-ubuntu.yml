@@ -33,6 +33,7 @@ jobs:
         - clang-13
         - clang-14
         - clang-15
+        - clang-16
         - gcc-4.4
         - gcc-4.5
         - gcc-4.6
