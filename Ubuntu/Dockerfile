@@ -196,7 +196,7 @@ RUN case $compiler in \
     case $tests in \
     "true")\
       apt-get install --no-install-recommends -y cmake ;\
-      cmake -B ./build -S ./tests ;\
+      cmake -B ./build -S ./tests -D RUN_COMPILER_CHECK=ON;\
       if [ $? -eq 0 ];\
         then exit 0;\
         else exit 1;\
