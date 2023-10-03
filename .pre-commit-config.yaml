@@ -54,7 +54,7 @@ repos:
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '150']
 
 - repo: https://github.com/commitizen-tools/commitizen
-  rev: 3.9.0
+  rev: 3.10.0
   hooks:
   - id: commitizen
 
@@ -65,7 +65,7 @@ repos:
     alias: ec
 
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.2.5
+  rev: v2.2.6
   hooks:
   - id: codespell
 
@@ -76,12 +76,12 @@ repos:
     args: [--ignore, DL3008, --ignore, DL3009, --ignore, DL3000, --ignore, DL3004, --ignore, SC2181, --ignore, DL3003, --ignore, SC2317, --ignore, DL3005]
 
 - repo: https://github.com/sirosen/check-jsonschema
-  rev: 0.26.3
+  rev: 0.27.0
   hooks:
   - id: check-github-workflows
 
 - repo: https://github.com/igorshubovych/markdownlint-cli
-  rev: v0.36.0
+  rev: v0.37.0
   hooks:
   - id: markdownlint
     args: [--config=.markdownlint.yml, scan]
