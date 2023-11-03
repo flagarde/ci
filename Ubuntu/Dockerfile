@@ -49,8 +49,8 @@ RUN case $compiler in \
     esac &&\
     #echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3 main" | tee -a "/etc/apt/sources.list.d/llvm-3.list" >/dev/null &&\
     #echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-5 main" | tee -a "/etc/apt/sources.list.d/llvm-5.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-6 main" | tee -a "/etc/apt/sources.list.d/llvm-6.list" >/dev/null &&\
+    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-5.0 main" | tee -a "/etc/apt/sources.list.d/llvm-5.list" >/dev/null &&\
+    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-6.0 main" | tee -a "/etc/apt/sources.list.d/llvm-6.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" | tee -a "/etc/apt/sources.list.d/llvm-7.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main" | tee -a "/etc/apt/sources.list.d/llvm-8.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-9 main" | tee -a "/etc/apt/sources.list.d/llvm-9.list" >/dev/null &&\
