@@ -47,8 +47,8 @@ RUN case $compiler in \
       echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;;\
     esac &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3 main" | tee -a "/etc/apt/sources.list.d/llvm-3.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null &&\
+    #echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3 main" | tee -a "/etc/apt/sources.list.d/llvm-3.list" >/dev/null &&\
+    #echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-5 main" | tee -a "/etc/apt/sources.list.d/llvm-5.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-6 main" | tee -a "/etc/apt/sources.list.d/llvm-6.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" | tee -a "/etc/apt/sources.list.d/llvm-7.list" >/dev/null &&\
