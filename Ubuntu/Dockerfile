@@ -184,11 +184,9 @@ RUN case $compiler in \
     "clang-16")\
       apt-get install --no-install-recommends -y clang-16 libc++1-16;\
       export CC=clang-16; export CXX=clang++-16; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=16.0.0; export CXX_COMPILER_VERSION=16.0.0 ;;\
-    *)\
     "clang-17")\
       apt-get install --no-install-recommends -y clang-17 libc++1-17;\
       export CC=clang-17; export CXX=clang++-17; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=17.0.0; export CXX_COMPILER_VERSION=17.0.0 ;;\
-    *)\
     "clang-18")\
       apt-get install --no-install-recommends -y clang-18 libc++1-18;\
       export CC=clang-18; export CXX=clang++-18; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=18.0.0; export CXX_COMPILER_VERSION=18.0.0 ;;\
