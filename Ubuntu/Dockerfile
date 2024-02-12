@@ -25,6 +25,16 @@ RUN case $compiler in \
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
+    
+    echo "deb http://archive.ubuntu.com/ubuntu/ jammy main" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ jammy universe" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates main" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates universe" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null ;\
+    
+    echo "deb http://archive.ubuntu.com/ubuntu/ noble main" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ noble universe" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ noble-updates main" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ noble-updates universe" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null ;\
     apt-get update &&\
     apt-get install --no-install-recommends -y wget gpg ca-certificates &&\
     wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0xE1DD270288B4E6030699E45FA1715D88E1DF1F24&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/git.gpg" > /dev/null &&\
