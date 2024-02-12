@@ -71,7 +71,7 @@ jobs:
 
     - name: ⬇️ Install gcc-flags
       if: ${{ contains(matrix.image, 'gcc') }}
-      run: python3 -m pip install gcc-flags
+      run: python3 -m pip install --break-system-packages gcc-flags
 
     - name: 📝 List warning flags for ${{ matrix.image }}
       if: ${{ contains(matrix.image, 'gcc') }}
