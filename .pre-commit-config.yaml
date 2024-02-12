@@ -42,7 +42,7 @@ repos:
     args: [--markdown-linebreak-ext=md]
 
 - repo: https://github.com/adrienverge/yamllint.git
-  rev: v1.33.0
+  rev: v1.34.0
   hooks:
   - id: yamllint
     args: [--format, parsable]
@@ -76,7 +76,7 @@ repos:
     args: [--ignore, DL3008, --ignore, DL3009, --ignore, DL3000, --ignore, DL3004, --ignore, SC2181, --ignore, DL3003, --ignore, SC2317, --ignore, DL3005]
 
 - repo: https://github.com/sirosen/check-jsonschema
-  rev: 0.27.4
+  rev: 0.28.0
   hooks:
   - id: check-github-workflows
 
