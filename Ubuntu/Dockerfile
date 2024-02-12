@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS base
+FROM ubuntu:24.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
