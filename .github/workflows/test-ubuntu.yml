@@ -70,6 +70,7 @@ jobs:
       uses: actions/setup-python@v5
       with:
         cache: pip
+        python-version: 3.11
 
     - name: 📝 List warning flags for ${{ matrix.image }}
       if: ${{ contains(matrix.image, 'gcc') }}
