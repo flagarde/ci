@@ -42,7 +42,7 @@ repos:
     args: [--markdown-linebreak-ext=md]
 
 - repo: https://github.com/adrienverge/yamllint.git
-  rev: v1.34.0
+  rev: v1.35.1
   hooks:
   - id: yamllint
     args: [--format, parsable]
@@ -54,7 +54,7 @@ repos:
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '150']
 
 - repo: https://github.com/commitizen-tools/commitizen
-  rev: v3.14.1
+  rev: v3.15.0
   hooks:
   - id: commitizen
 
