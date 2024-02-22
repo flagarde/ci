@@ -69,10 +69,12 @@ jobs:
       if: ${{ contains(matrix.image, 'gcc') }}
       uses: actions/setup-python@v5
       with:
-        python-version: '3.13' 
+        python-version: '3.12' 
         cache: 'pip'
-    
-    - run: pip install --break-system-packages gcc-flags
+
+    - name: ⬇️ Install gcc-flags
+      if: ${{ contains(matrix.image, 'gcc') }}
+      run: pip install --break-system-packages gcc-flags
 
     - name: 📝 List warning flags for ${{ matrix.image }}
       if: ${{ contains(matrix.image, 'gcc') }}
