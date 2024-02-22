@@ -63,7 +63,7 @@ jobs:
       run: apt list --installed
 
     - name: ⬇️ Install CMake
-      run: apt-get install --no-install-recommends -y cmake lsb_release
+      run: apt-get install --no-install-recommends -y cmake lsb-release
 
     - name: ⬇️ Install Python              
       if: ${{ contains(matrix.image, 'gcc') }}
