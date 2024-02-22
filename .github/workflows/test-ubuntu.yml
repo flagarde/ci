@@ -72,10 +72,6 @@ jobs:
         python-version: 3.12
         cache: pip
 
-    - name: ⬇️ Install gcc-flags
-      if: ${{ contains(matrix.image, 'gcc') }}
-      run: pip install --break-system-packages gcc-flags
-
     - name: 📝 List warning flags for ${{ matrix.image }}
       if: ${{ contains(matrix.image, 'gcc') }}
       run: gcc_flags
