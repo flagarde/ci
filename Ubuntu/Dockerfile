@@ -3,17 +3,17 @@ ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
 RUN case $compiler in \
-    "clang-5")\
-      apt-get -qq update ;\
-      apt-get -qq install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
+    #"clang-5")\
+    #  apt-get -qq update ;\
+    #  apt-get -qq install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
       #apt-mark hold gcc-10-base ;;\
-    "clang-7")\
-      apt-get -qq update ;\
-      apt-get -qq install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
+    #"clang-7")\
+    #  apt-get -qq update ;\
+    #  apt-get -qq install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
       #apt-mark hold gcc-10-base ;;\
-    "clang-8")\
-      apt-get -qq update ;\
-      apt-get -qq install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
+    #"clang-8")\
+    #  apt-get -qq update ;\
+    #  apt-get -qq install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
       #apt-mark hold gcc-10-base ;;\
     esac &&\
     #apt-mark hold libsystemd0 &&\
