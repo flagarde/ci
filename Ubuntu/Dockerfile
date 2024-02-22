@@ -180,7 +180,7 @@ RUN case $compiler in \
       apt-get -qq install --no-install-recommends -y clang-13 libc++1-13;\
       export CC=clang-13; export CXX=clang++-13; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=13.0.1; export CXX_COMPILER_VERSION=13.0.1 ;;\
     "clang-14")\
-      apt-get -qq install --no-install-recommends -y clang-14 libc++1-14;\
+      apt-get -qq install --no-install-recommends -y clang-14 libc++1-14 g++-13;\
       export CC=clang-14; export CXX=clang++-14; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=14.0.6; export CXX_COMPILER_VERSION=14.0.6 ;;\
     "clang-15")\
       apt-get -qq install --no-install-recommends -y clang-15 libc++1-15;\
