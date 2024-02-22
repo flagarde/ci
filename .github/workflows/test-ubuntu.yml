@@ -65,13 +65,14 @@ jobs:
     - name: ⬇️ Install CMake
       run: apt-get install --no-install-recommends -y cmake
 
-    - name: ⬇️ Install with apt-get
+    - name: ⬇️ Install Python              
       if: ${{ contains(matrix.image, 'gcc') }}
-      run: apt-get install --no-install-recommends -y python3-pip
-
-    - name: ⬇️ Install gcc-flags
-      if: ${{ contains(matrix.image, 'gcc') }}
-      run: python3 -m pip install --break-system-packages gcc-flags
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13' 
+        cache: 'pip'
+    
+    - run: pip install --break-system-packages gcc-flags
 
     - name: 📝 List warning flags for ${{ matrix.image }}
       if: ${{ contains(matrix.image, 'gcc') }}
