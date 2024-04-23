@@ -60,7 +60,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: 📝 List installed packages
-      run: apt list --installed
+      run: apt update; apt list --installed
 
     - name: ⬇️ Install CMake
       run: apt-get install --no-install-recommends -y cmake
