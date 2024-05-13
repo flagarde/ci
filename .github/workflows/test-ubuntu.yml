@@ -51,6 +51,7 @@ jobs:
         - gcc-11
         - gcc-12
         - gcc-13
+        - gcc-14
 
     container: flagarde/ci-ubuntu-${{ matrix.image }}-x86_64:latest
 
