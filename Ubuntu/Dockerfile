@@ -134,6 +134,9 @@ RUN case $compiler in \
     "gcc-13")\
       apt-get -qq install --no-install-recommends -y g++-13;\
       export CC=gcc-13; export CXX=g++-13; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=13.1.0; export CXX_COMPILER_VERSION=13.1.0 ;;\
+    "gcc-14")\
+      apt-get -qq install --no-install-recommends -y g++-14;\
+      export CC=gcc-14; export CXX=g++-14; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=14.1.0; export CXX_COMPILER_VERSION=14.1.0 ;;\
     "clang-3.5")\
       apt-get -qq install --no-install-recommends -y clang-3.5;\
       export CC=clang-3.5; export CXX=clang++-3.5; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.5.2; export CXX_COMPILER_VERSION=3.5.2 ;;\
