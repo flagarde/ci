@@ -2,7 +2,7 @@ FROM ubuntu:24.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
-RUN apt-get -qq update ; apt-get -qq install --no-install-recommends -y wget gpg ca-certificates binutils make &&\
+RUN apt-get -qq update ; apt-get -qq install --no-install-recommends -y wget gpg ca-certificates &&\
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null &&\
@@ -29,6 +29,8 @@ RUN apt-get -qq update ; apt-get -qq install --no-install-recommends -y wget gpg
     wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0x1E9377A2BA9EF27F&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/toolchains.gpg" > /dev/null &&\
     echo "deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null &&\
     echo "deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null &&\
+    apt-get -qq update &&\
+    apt-get -qq install --no-install-recommends -y binutils; apt-get install --reinstall make &&\
     apt-get -qq remove -y wget gpg &&\
     apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y
 
