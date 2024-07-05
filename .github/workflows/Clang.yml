@@ -6,11 +6,11 @@
       branches: [main]
       paths:
       - Ubuntu/**
-      - .github/workflows/publish-ubuntu.yml
+      - .github/workflows/Clang.yml
     pull_request:
       paths:
       - Ubuntu/**
-      - .github/workflows/publish-ubuntu.yml
+      - .github/workflows/Clang.yml
     workflow_dispatch:
 
   jobs:
