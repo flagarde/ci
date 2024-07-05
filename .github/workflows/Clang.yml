@@ -30,39 +30,15 @@
       steps:
       - name: 📥 Checkout
         uses: actions/checkout@v4
-      #- name: 🔑 Log in to ghcr.io
-      #  uses: docker/login-action@v3.2.0
-      #  with:
-      #    registry: ghcr.io
-      #    username: ${{ github.actor }}
-      #    password: ${{ secrets.GITHUB_TOKEN }}
-      #    logout: false
-      #- name: 📤 Extract metadata from ghcr.io
-      #  id: ghcr
-      #  uses: docker/metadata-action@v5.5.1
-      #  with:
-      #    images: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
-      #- name: ⚙️ Build and push image
-      #  uses: docker/build-push-action@v6.3.0
-      #  with:
-      #    context: ./Ubuntu
-      #    build-args: |
-      #      compiler=clang-${{ matrix.version }}
-      #    push: ${{ github.event_name == 'workflow_dispatch' }}
-      #    file: ./Ubuntu/Clang
-      #    tags: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
-      #    labels: ${{ steps.ghcr.outputs.labels }}
-
-      - name: 🔑 Log in to the hub.docker
+      - name: 🔑 Log in to ghcr.io
         uses: docker/login-action@v3.2.0
-        if: ${{ github.event_name == 'workflow_dispatch' }}
         with:
+          registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.HUB_DOCKER }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           logout: false
       - name: 📤 Extract metadata from ghcr.io
-        if: ${{ github.event_name == 'workflow_dispatch' }}
-        id: hub
+        id: ghcr
         uses: docker/metadata-action@v5.5.1
         with:
           images: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
@@ -74,5 +50,24 @@
             compiler=clang-${{ matrix.version }}
           push: ${{ github.event_name == 'workflow_dispatch' }}
           file: ./Ubuntu/Clang
+          tags: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
+          labels: ${{ steps.ghcr.outputs.labels }}
+
+      - name: 🔑 Log in to the hub.docker
+        uses: docker/login-action@v3.2.0
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.HUB_DOCKER }}
+          logout: false
+
+      - name: ⚙️ Build and push image
+        uses: docker/build-push-action@v6.3.0
+        with:
+          context: ./Ubuntu
+          build-args: |
+            compiler=clang-${{ matrix.version }}
+          push: ${{ github.event_name == 'workflow_dispatch' }}
+          file: ./Ubuntu/Clang
           tags: ${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
-          labels: ${{ steps.hub.outputs.labels }}
+          labels: ${{ steps.ghcr.outputs.labels }}
