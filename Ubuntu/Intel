@@ -1,0 +1,49 @@
+FROM ubuntu:24.04 AS base
+ENV DEBIAN_FRONTEND=noninteractive
+SHELL ["/bin/bash","-o","pipefail","-c"]
+ARG compiler
+RUN apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y &&\
+    apt-get -qq install --no-install-recommends -y ca-certificates binutils make &&\
+    echo 'deb [trusted=yes] https://apt.kitware.com/ubuntu/ noble main' | tee "/etc/apt/sources.list.d/kitware.list" >/dev/null &&\
+    #wget -q -O - "https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB" | gpg -q --dearmor - | tee "/usr/share/keyrings/oneapi.gpg" >/dev/null &&\
+    echo "deb [trusted=yes] https://apt.repos.intel.com/oneapi all main" | tee "/etc/apt/sources.list.d/oneAPI.list" >/dev/null &&\
+    #wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0x1E9377A2BA9EF27F&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/toolchains.gpg" > /dev/null &&\
+    echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null &&\
+    echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null &&\
+    apt-get -qq update
+    #apt-get -qq remove -y wget gpg
+    #apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y
+
+FROM base AS compiler
+ARG compiler
+ARG tests
+WORKDIR .
+COPY tests ./tests/
+ENV DEBIAN_FRONTEND=noninteractive
+SHELL ["/bin/bash","-o","pipefail","-c"]
+RUN apt install --no-install-recommends -y intel-oneapi-compiler-dpcpp-cpp; . /opt/intel/oneapi/setvars.sh &&\
+    apt-get -qq upgrade; apt-get -qq autoremove -y ; apt-get -qq clean -y &&\
+    echo "** make --version :" &&\
+    make --version &&\
+    echo "** CC --version :" &&\
+    $CC --version &&\
+    echo "** CXX --version :" &&\
+    $CXX --version &&\
+    echo "** C_COMPILER_ID=$C_COMPILER_ID, C_COMPILER_VERSION=$C_COMPILER_VERSION" &&\
+    echo "** CXX_COMPILER_ID=$CXX_COMPILER_ID, CXX_COMPILER_VERSION=$CXX_COMPILER_VERSION" &&\
+    case $tests in \
+    "true")\
+      apt-get -qq install --no-install-recommends -y cmake ;\
+      cmake -B ./build -S ./tests -D RUN_COMPILER_CHECK=ON;\
+      if [ $? -eq 0 ];\
+        then exit 0;\
+        else exit 1;\
+      fi;\
+      cmake --build ./build ;\
+      if [ $? -eq 0 ];\
+        then exit 0;\
+        else exit 1;\
+      fi;\
+      rm -rf ./build ;\
+    esac &&\
+    rm -rf ./tests \
