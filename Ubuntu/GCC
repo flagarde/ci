@@ -3,29 +3,25 @@ ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
 RUN echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty main" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
-    #echo "deb http://archive.ubuntu.com/ubuntu/ noble main" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null &&\
-    #echo "deb http://archive.ubuntu.com/ubuntu/ noble universe" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null &&\
-    #echo "deb http://archive.ubuntu.com/ubuntu/ noble-updates main" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null &&\
-    #echo "deb http://archive.ubuntu.com/ubuntu/ noble-updates universe" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty main" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
     apt-get -qq update &&\
     apt-get -qq install --no-install-recommends -y wget gpg ca-certificates &&\
-    wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0xE1DD270288B4E6030699E45FA1715D88E1DF1F24&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/git.gpg" > /dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/git.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main" | tee -a "/etc/apt/sources.list.d/git.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ jammy main" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ jammy universe" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ jammy-updates main" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ jammy-updates universe" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
+    #wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0xE1DD270288B4E6030699E45FA1715D88E1DF1F24&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/git.gpg" > /dev/null &&\
+    #echo "deb [signed-by=/usr/share/keyrings/git.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main" | tee -a "/etc/apt/sources.list.d/git.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ jammy main" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ jammy universe" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ jammy-updates main" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ jammy-updates universe" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
     wget -q -O - "https://apt.kitware.com/keys/kitware-archive-latest.asc" | gpg -q --dearmor - | tee "/usr/share/keyrings/kitware.gpg" >/dev/null &&\
     echo 'deb [trusted=yes] https://apt.kitware.com/ubuntu/ focal main' | tee "/etc/apt/sources.list.d/kitware.list" >/dev/null &&\
     echo 'deb [signed-by=/usr/share/keyrings/kitware.gpg] https://apt.kitware.com/ubuntu/ focal-rc main' | tee -a "/etc/apt/sources.list.d/kitware-rc.list" >/dev/null && \
