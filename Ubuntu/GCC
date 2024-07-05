@@ -2,7 +2,8 @@ FROM ubuntu:24.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
-RUN echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
+RUN apt-get -qq update &&\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
     #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
     #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null &&\
     #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null &&\
