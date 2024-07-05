@@ -46,10 +46,10 @@ RUN case $compiler in \
       echo "deb http://archive.ubuntu.com/ubuntu/ jammy universe" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates main" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null ;\
       echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates universe" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null ;\
-      echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
-      echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
-      echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
-      echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;;\
+      #echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+      #echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+      #echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
+      #echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;;\
     esac &&\
     #echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3 main" | tee -a "/etc/apt/sources.list.d/llvm-3.list" >/dev/null &&\
     #echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null &&\
@@ -69,8 +69,8 @@ RUN case $compiler in \
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-18 main" | tee -a "/etc/apt/sources.list.d/llvm-18.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal main" | tee -a "/etc/apt/sources.list.d/llvm.list" >/dev/null &&\
     wget -q -O - "https://apt.kitware.com/keys/kitware-archive-latest.asc" | gpg -q --dearmor - | tee "/usr/share/keyrings/kitware.gpg" >/dev/null &&\
-    echo 'deb [trusted=yes] https://apt.kitware.com/ubuntu/ focal main' | tee "/etc/apt/sources.list.d/kitware.list" >/dev/null &&\
-    echo 'deb [signed-by=/usr/share/keyrings/kitware.gpg] https://apt.kitware.com/ubuntu/ focal-rc main' | tee -a "/etc/apt/sources.list.d/kitware-rc.list" >/dev/null && \
+    echo 'deb [trusted=yes] https://apt.kitware.com/ubuntu/ noble main' | tee "/etc/apt/sources.list.d/kitware.list" >/dev/null &&\
+    echo 'deb [signed-by=/usr/share/keyrings/kitware.gpg] https://apt.kitware.com/ubuntu/ noble-rc main' | tee -a "/etc/apt/sources.list.d/kitware-rc.list" >/dev/null && \
     wget -q -O - "https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB" | gpg -q --dearmor - | tee "/usr/share/keyrings/oneapi.gpg" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/oneapi.gpg] https://apt.repos.intel.com/oneapi all main" | tee "/etc/apt/sources.list.d/oneAPI.list" >/dev/null &&\
     wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0x1E9377A2BA9EF27F&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/toolchains.gpg" > /dev/null &&\
