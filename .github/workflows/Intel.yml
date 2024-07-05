@@ -25,18 +25,23 @@
       steps:
       - name: 📥 Checkout
         uses: actions/checkout@v4
+
       - name: 🔑 Log in to ghcr.io
         uses: docker/login-action@v3.2.0
+        if: ${{ github.event_name == 'workflow_dispatch' }}
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           logout: false
+
       - name: 📤 Extract metadata from ghcr.io
         id: ghcr
         uses: docker/metadata-action@v5.5.1
+        if: ${{ github.event_name == 'workflow_dispatch' }}
         with:
           images: ghcr.io/${{ github.repository }}-ubuntu-intel-${{ matrix.version }}-x86_64:latest
+
       - name: ⚙️ Build and push image
         uses: docker/build-push-action@v6.3.0
         with:
@@ -53,6 +58,7 @@
           username: ${{ github.actor }}
           password: ${{ secrets.HUB_DOCKER }}
           logout: false
+
       - name: ⚙️ Build and push image
         uses: docker/build-push-action@v6.3.0
         with:
