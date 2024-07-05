@@ -48,7 +48,7 @@
       #    context: ./Ubuntu
       #    build-args: |
       #      compiler=clang-${{ matrix.version }}
-      #    push: ${{ github.event_name != 'pull_request' }}
+      #    push: ${{ github.event_name == 'workflow_dispatch' }}
       #    file: ./Ubuntu/Clang
       #    tags: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
       #    labels: ${{ steps.ghcr.outputs.labels }}
@@ -70,7 +70,7 @@
           context: ./Ubuntu
           build-args: |
             compiler=clang-${{ matrix.version }}
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name == 'workflow_dispatch' }}
           file: ./Ubuntu/Clang
           tags: ${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
           labels: ${{ steps.hub.outputs.labels }}
