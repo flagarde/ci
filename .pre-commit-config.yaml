@@ -53,11 +53,6 @@ repos:
   - id: yamlfmt
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '150']
 
-- repo: https://github.com/commitizen-tools/commitizen
-  rev: v3.27.0
-  hooks:
-  - id: commitizen
-
 - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
   rev: 2.7.3
   hooks:
