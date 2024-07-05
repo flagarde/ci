@@ -137,70 +137,9 @@ RUN case $compiler in \
     "gcc-14")\
       apt-get -qq install --no-install-recommends -y g++-14;\
       export CC=gcc-14; export CXX=g++-14; export C_COMPILER_ID=GNU; export CXX_COMPILER_ID=GNU; export C_COMPILER_VERSION=14.1.0; export CXX_COMPILER_VERSION=14.1.0 ;;\
-    "clang-3.5")\
-      apt-get -qq install --no-install-recommends -y clang-3.5;\
-      export CC=clang-3.5; export CXX=clang++-3.5; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.5.2; export CXX_COMPILER_VERSION=3.5.2 ;;\
-    "clang-3.6")\
-      apt-get -qq install --no-install-recommends -y clang-3.6;\
-      export CC=clang-3.6; export CXX=clang++-3.6; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.6.2; export CXX_COMPILER_VERSION=3.6.2 ;;\
-    "clang-3.7")\
-      apt-get -qq install --no-install-recommends -y clang-3.7;\
-      export CC=clang-3.7; export CXX=clang++-3.7; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.7.1; export CXX_COMPILER_VERSION=3.7.1 ;;\
-    "clang-3.8")\
-      apt-get -qq install --no-install-recommends -y clang-3.8;\
-      export CC=clang-3.8; export CXX=clang++-3.8; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.8.0; export CXX_COMPILER_VERSION=3.8.0 ;;\
-    "clang-3.9")\
-      apt-get -qq install --no-install-recommends -y clang-3.9;\
-      export CC=clang-3.9; export CXX=clang++-3.9; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.9.1; export CXX_COMPILER_VERSION=3.9.1 ;;\
-    "clang-4")\
-      apt-get -qq install --no-install-recommends -y clang-4.0;\
-      export CC=clang-4.0; export CXX=clang++-4.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=4.0.0; export CXX_COMPILER_VERSION=4.0.0 ;;\
-    "clang-5")\
-      apt-get -qq install --no-install-recommends -y clang-5.0;\
-      export CC=clang-5.0; export CXX=clang++-5.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=5.0.1; export CXX_COMPILER_VERSION=5.0.1 ;;\
-    "clang-6")\
-      apt-get -qq install --no-install-recommends -y clang-6.0;\
-      export CC=clang-6.0; export CXX=clang++-6.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=6.0.1; export CXX_COMPILER_VERSION=6.0.1 ;;\
-    "clang-7")\
-      apt-get -qq install --no-install-recommends -y clang-7 libc++1-7;\
-      export CC=clang-7; export CXX=clang++-7; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=7.1.0; export CXX_COMPILER_VERSION=7.1.0 ;;\
-    "clang-8")\
-      apt-get -qq install --no-install-recommends -y clang-8 libc++1-8;\
-      export CC=clang-8; export CXX=clang++-8; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=8.0.1; export CXX_COMPILER_VERSION=8.0.1 ;;\
-    "clang-9")\
-      apt-get -qq install --no-install-recommends -y clang-9 libc++1-9;\
-      export CC=clang-9; export CXX=clang++-9; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=9.0.1; export CXX_COMPILER_VERSION=9.0.1 ;;\
-    "clang-10")\
-      apt-get -qq install --no-install-recommends -y clang-10 libc++1-10;\
-      export CC=clang-10; export CXX=clang++-10; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=10.0.1; export CXX_COMPILER_VERSION=10.0.1 ;;\
-    "clang-11")\
-      apt-get -qq install --no-install-recommends -y clang-11 libc++1-11;\
-      export CC=clang-11; export CXX=clang++-11; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=11.1.0; export CXX_COMPILER_VERSION=11.1.0 ;;\
-    "clang-12")\
-      apt-get -qq install --no-install-recommends -y clang-12 libc++1-12;\
-      export CC=clang-12; export CXX=clang++-12; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=12.0.1; export CXX_COMPILER_VERSION=12.0.1 ;;\
-    "clang-13")\
-      apt-get -qq install --no-install-recommends -y clang-13 libc++1-13;\
-      export CC=clang-13; export CXX=clang++-13; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=13.0.1; export CXX_COMPILER_VERSION=13.0.1 ;;\
-    "clang-14")\
-      apt-get -qq install --no-install-recommends -y clang-14 libc++1-14 libstdc++-13-dev;\
-      export CC=clang-14; export CXX=clang++-14; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=14.0.6; export CXX_COMPILER_VERSION=14.0.6 ;;\
-    "clang-15")\
-      apt-get -qq install --no-install-recommends -y clang-15 libc++1-15;\
-      export CC=clang-15; export CXX=clang++-15; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=15.0.6; export CXX_COMPILER_VERSION=15.0.6 ;;\
-    "clang-16")\
-      apt-get -qq install --no-install-recommends -y clang-16 libc++1-16;\
-      export CC=clang-16; export CXX=clang++-16; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=16.0.0; export CXX_COMPILER_VERSION=16.0.0 ;;\
-    "clang-17")\
-      apt-get -qq install --no-install-recommends -y clang-17 libc++1-17;\
-      export CC=clang-17; export CXX=clang++-17; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=17.0.0; export CXX_COMPILER_VERSION=17.0.0 ;;\
-    "clang-18")\
-      apt-get -qq install --no-install-recommends -y clang-18 libc++1-18;\
-      export CC=clang-18; export CXX=clang++-18; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=18.0.0; export CXX_COMPILER_VERSION=18.0.0 ;;\
     *)\
       echo "No compiler provided !";\
-      echo "GCC Available : gcc-4.4, gcc-4.5, gcc-4.6, gcc-4.7, gcc-4.8, gcc-4.9, gcc-5, gcc-6, gcc-7, gcc-8, gcc-9, gcc-10, gcc-11, gcc-12";\
-      echo "Clang Available : clang-3.5, clang-3.6, clang-3.7, clang-3.8, clang-3.9, clang-4, clang-5, clang-6, clang-7, clang-8, clang-9, clang-10, clang-11, clang-12, clang-13, clang-14, clang-15, clang-16, clang-17, clang-18";;\
+      echo "GCC Available : gcc-4.4, gcc-4.5, gcc-4.6, gcc-4.7, gcc-4.8, gcc-4.9, gcc-5, gcc-6, gcc-7, gcc-8, gcc-9, gcc-10, gcc-11, gcc-12";;\
     esac &&\
     ln -s /usr/bin/$CC /usr/bin/gcc &&\
     ln -s /usr/bin/$CXX /usr/bin/g++ &&\
