@@ -21,17 +21,17 @@ RUN echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
     apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y &&\
-    apt-get -qq install --no-install-recommends -y wget gpg ca-certificates binutils make &&\
-    wget -q -O - "https://apt.kitware.com/keys/kitware-archive-latest.asc" | gpg -q --dearmor - | tee "/usr/share/keyrings/kitware.gpg" >/dev/null &&\
+    apt-get -qq install --no-install-recommends -y ca-certificates binutils make &&\
+    #wget -q -O - "https://apt.kitware.com/keys/kitware-archive-latest.asc" | gpg -q --dearmor - | tee "/usr/share/keyrings/kitware.gpg" >/dev/null &&\
     echo 'deb [trusted=yes] https://apt.kitware.com/ubuntu/ noble main' | tee "/etc/apt/sources.list.d/kitware.list" >/dev/null &&\
-    echo 'deb [signed-by=/usr/share/keyrings/kitware.gpg] https://apt.kitware.com/ubuntu/ noble-rc main' | tee -a "/etc/apt/sources.list.d/kitware-rc.list" >/dev/null && \
+    echo 'deb [[trusted=yes]] https://apt.kitware.com/ubuntu/ noble-rc main' | tee -a "/etc/apt/sources.list.d/kitware-rc.list" >/dev/null && \
     #wget -q -O - "https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB" | gpg -q --dearmor - | tee "/usr/share/keyrings/oneapi.gpg" >/dev/null &&\
     #echo "deb [signed-by=/usr/share/keyrings/oneapi.gpg] https://apt.repos.intel.com/oneapi all main" | tee "/etc/apt/sources.list.d/oneAPI.list" >/dev/null &&\
-    wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0x1E9377A2BA9EF27F&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/toolchains.gpg" > /dev/null &&\
-    echo "deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null &&\
-    echo "deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null &&\
+    #wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0x1E9377A2BA9EF27F&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/toolchains.gpg" > /dev/null &&\
+    echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null &&\
+    echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null &&\
     apt-get -qq update &&\
-    apt-get -qq remove -y wget gpg
+    #apt-get -qq remove -y wget gpg
     #apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y
 
 FROM base AS compiler
