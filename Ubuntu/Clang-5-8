@@ -2,7 +2,9 @@ FROM ubuntu:22.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
-RUN case $compiler in \
+RUN apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y &&\
+    apt-get -qq install --no-install-recommends -y ca-certificates binutils make &&\
+    case $compiler in \
     "clang-5")\
       apt-get -qq update ;\
       apt-get -qq install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
