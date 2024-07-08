@@ -70,30 +70,70 @@ ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 RUN case $compiler in \
     "clang-3.5")\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty main" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null ;\
       apt-get update ;apt-get install --no-install-recommends -y clang-3.5;\
       export CC=clang-3.5; export CXX=clang++-3.5; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.5.2; export CXX_COMPILER_VERSION=3.5.2 ;;\
     "clang-3.6")\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty main" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null ;\
       apt-get update ;apt-get install --no-install-recommends -y clang-3.6;\
       export CC=clang-3.6; export CXX=clang++-3.6; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.6.2; export CXX_COMPILER_VERSION=3.6.2 ;;\
     "clang-3.7")\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty main" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null ;\
       apt-get  update ;apt-get install --no-install-recommends -y clang-3.7;\
       export CC=clang-3.7; export CXX=clang++-3.7; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.7.1; export CXX_COMPILER_VERSION=3.7.1 ;;\
     "clang-3.8")\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty main" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null ;\
       apt-get update ;apt-get install --no-install-recommends -y clang-3.8;\
       export CC=clang-3.8; export CXX=clang++-3.8; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.8.0; export CXX_COMPILER_VERSION=3.8.0 ;;\
     "clang-3.9")\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3.9 main" | tee -a "/etc/apt/sources.list.d/llvm-3.list" >/dev/null ;\
       apt-get update ;apt-get install --no-install-recommends -y clang-3.9;\
       export CC=clang-3.9; export CXX=clang++-3.9; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.9.1; export CXX_COMPILER_VERSION=3.9.1 ;;\
     "clang-4")\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null ;\
       apt-get update ;apt-get install --no-install-recommends -y clang-4.0;\
       export CC=clang-4.0; export CXX=clang++-4.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=4.0.0; export CXX_COMPILER_VERSION=4.0.0 ;;\
