@@ -2,9 +2,7 @@ FROM ubuntu:20.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
-RUN apt-get -qq update &&\
-    apt-get -qq install --no-install-recommends -y binutils make &&\
-    case $compiler in \
+RUN case $compiler in \
     "clang-5")\
       apt-get -qq update ;\
       apt-get -qq install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
@@ -55,7 +53,7 @@ RUN apt-get -qq update &&\
     echo "deb [signed-by=/usr/share/keyrings/toolchains.gpg] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/toolchains.gpg] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null &&\
     apt-get -qq update &&\
-    #apt-get -qq install --no-install-recommends -y binutils make &&\
+    apt-get -qq install --no-install-recommends -y binutils make &&\
     apt-get -qq remove -y wget gpg &&\
     apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y
 
