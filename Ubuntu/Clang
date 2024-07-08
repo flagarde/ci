@@ -30,10 +30,7 @@ RUN apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; ap
     #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null &&\
     #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
     #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal main" | tee -a "/etc/apt/sources.list.d/focal.list" >/dev/null ;\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal universe" | tee -a "/etc/apt/sources.list.d/focal.list" >/dev/null ;\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal-updates main" | tee -a "/etc/apt/sources.list.d/focal-updates.list" >/dev/null ;\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal-updates universe" | tee -a "/etc/apt/sources.list.d/focal-updates.list" >/dev/null ;\
+
     #apt-get -qq update &&\
     #apt-get -qq install --no-install-recommends -y wget gpg ca-certificates &&\
     #wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0xE1DD270288B4E6030699E45FA1715D88E1DF1F24&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/git.gpg" > /dev/null &&\
@@ -53,22 +50,22 @@ RUN apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; ap
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;;\
     #esac &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3.9 main" | tee -a "/etc/apt/sources.list.d/llvm-3.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-5.0 main" | tee -a "/etc/apt/sources.list.d/llvm-5.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-6.0 main" | tee -a "/etc/apt/sources.list.d/llvm-6.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" | tee -a "/etc/apt/sources.list.d/llvm-7.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main" | tee -a "/etc/apt/sources.list.d/llvm-8.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/focal/ llvm-toolchain-focal-9 main" | tee -a "/etc/apt/sources.list.d/llvm-9.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a "/etc/apt/sources.list.d/llvm-10.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main" | tee -a "/etc/apt/sources.list.d/llvm-11.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main" | tee -a "/etc/apt/sources.list.d/llvm-12.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/jammy/ llvm-toolchain-jammy-13 main" | tee -a "/etc/apt/sources.list.d/llvm-13.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/jammy/ llvm-toolchain-jammy-14 main" | tee -a "/etc/apt/sources.list.d/llvm-14.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/lunar/ llvm-toolchain-lunar-15 main" | tee -a "/etc/apt/sources.list.d/llvm-15.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/lunar/ llvm-toolchain-lunar-16 main" | tee -a "/etc/apt/sources.list.d/llvm-16.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-17 main" | tee -a "/etc/apt/sources.list.d/llvm-17.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main" | tee -a "/etc/apt/sources.list.d/llvm-18.list" >/dev/null &&\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble main" | tee -a "/etc/apt/sources.list.d/llvm.list" >/dev/null &&\
     #wget -q -O - "https://apt.kitware.com/keys/kitware-archive-latest.asc" | gpg -q --dearmor - | tee "/usr/share/keyrings/kitware.gpg" >/dev/null &&\
     echo 'deb [trusted=yes] https://apt.kitware.com/ubuntu/ noble main' | tee "/etc/apt/sources.list.d/kitware.list" >/dev/null &&\
@@ -89,64 +86,96 @@ ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 RUN case $compiler in \
     "clang-3.5")\
-      apt-get -qq install --no-install-recommends -y clang-3.5;\
+      apt-get -qq update ;apt-get -qq install --no-install-recommends -y clang-3.5;\
       export CC=clang-3.5; export CXX=clang++-3.5; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.5.2; export CXX_COMPILER_VERSION=3.5.2 ;;\
     "clang-3.6")\
-      apt-get -qq install --no-install-recommends -y clang-3.6;\
+      apt-get -qq update ;apt-get -qq install --no-install-recommends -y clang-3.6;\
       export CC=clang-3.6; export CXX=clang++-3.6; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.6.2; export CXX_COMPILER_VERSION=3.6.2 ;;\
     "clang-3.7")\
-      apt-get -qq install --no-install-recommends -y clang-3.7;\
+      apt-get -qq update ;apt-get -qq install --no-install-recommends -y clang-3.7;\
       export CC=clang-3.7; export CXX=clang++-3.7; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.7.1; export CXX_COMPILER_VERSION=3.7.1 ;;\
     "clang-3.8")\
-      apt-get -qq install --no-install-recommends -y clang-3.8;\
+      apt-get -qq update ;apt-get -qq install --no-install-recommends -y clang-3.8;\
       export CC=clang-3.8; export CXX=clang++-3.8; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.8.0; export CXX_COMPILER_VERSION=3.8.0 ;;\
     "clang-3.9")\
-      apt-get -qq install --no-install-recommends -y clang-3.9;\
+      echo "deb [trusted=yes] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3.9 main" | tee -a "/etc/apt/sources.list.d/llvm-3.list" >/dev/null ;\
+      apt-get -qq update ;apt-get -qq install --no-install-recommends -y clang-3.9;\
       export CC=clang-3.9; export CXX=clang++-3.9; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=3.9.1; export CXX_COMPILER_VERSION=3.9.1 ;;\
     "clang-4")\
-      apt-get -qq install --no-install-recommends -y clang-4.0;\
+      echo "deb [trusted=yes] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null ;\
+      apt-get -qq update ;apt-get -qq install --no-install-recommends -y clang-4.0;\
       export CC=clang-4.0; export CXX=clang++-4.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=4.0.0; export CXX_COMPILER_VERSION=4.0.0 ;;\
     "clang-5")\
-      apt-get -qq install --no-install-recommends -y clang-5.0;\
+      echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-5.0 main" | tee -a "/etc/apt/sources.list.d/llvm-5.list" >/dev/null ;\
+      apt-get -qq update ;apt-get -qq install --no-install-recommends -y clang-5.0;\
       export CC=clang-5.0; export CXX=clang++-5.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=5.0.1; export CXX_COMPILER_VERSION=5.0.1 ;;\
     "clang-6")\
-      apt-get -qq install --no-install-recommends -y clang-6.0;\
+      echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-6.0 main" | tee -a "/etc/apt/sources.list.d/llvm-6.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-6.0;\
       export CC=clang-6.0; export CXX=clang++-6.0; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=6.0.1; export CXX_COMPILER_VERSION=6.0.1 ;;\
     "clang-7")\
-      apt-get -qq install --no-install-recommends -y clang-7 libc++1-7;\
+    echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" | tee -a "/etc/apt/sources.list.d/llvm-7.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-7 libc++1-7;\
       export CC=clang-7; export CXX=clang++-7; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=7.1.0; export CXX_COMPILER_VERSION=7.1.0 ;;\
     "clang-8")\
-      apt-get -qq install --no-install-recommends -y clang-8 libc++1-8;\
+      echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main" | tee -a "/etc/apt/sources.list.d/llvm-8.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-8 libc++1-8;\
       export CC=clang-8; export CXX=clang++-8; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=8.0.1; export CXX_COMPILER_VERSION=8.0.1 ;;\
     "clang-9")\
-      apt-get -qq install --no-install-recommends -y clang-9 libc++1-9;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal main" | tee -a "/etc/apt/sources.list.d/focal.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal universe" | tee -a "/etc/apt/sources.list.d/focal.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal-updates main" | tee -a "/etc/apt/sources.list.d/focal-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal-updates universe" | tee -a "/etc/apt/sources.list.d/focal-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://apt.llvm.org/focal/ llvm-toolchain-focal-9 main" | tee -a "/etc/apt/sources.list.d/llvm-9.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-9 libc++1-9;\
       export CC=clang-9; export CXX=clang++-9; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=9.0.1; export CXX_COMPILER_VERSION=9.0.1 ;;\
     "clang-10")\
-      apt-get -qq install --no-install-recommends -y clang-10 libc++1-10;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal main" | tee -a "/etc/apt/sources.list.d/focal.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal universe" | tee -a "/etc/apt/sources.list.d/focal.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal-updates main" | tee -a "/etc/apt/sources.list.d/focal-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal-updates universe" | tee -a "/etc/apt/sources.list.d/focal-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a "/etc/apt/sources.list.d/llvm-10.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-10 libc++1-10;\
       export CC=clang-10; export CXX=clang++-10; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=10.0.1; export CXX_COMPILER_VERSION=10.0.1 ;;\
     "clang-11")\
-      apt-get -qq install --no-install-recommends -y clang-11 libc++1-11;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal main" | tee -a "/etc/apt/sources.list.d/focal.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal universe" | tee -a "/etc/apt/sources.list.d/focal.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal-updates main" | tee -a "/etc/apt/sources.list.d/focal-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal-updates universe" | tee -a "/etc/apt/sources.list.d/focal-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main" | tee -a "/etc/apt/sources.list.d/llvm-11.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-11 libc++1-11;\
       export CC=clang-11; export CXX=clang++-11; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=11.1.0; export CXX_COMPILER_VERSION=11.1.0 ;;\
     "clang-12")\
-      apt-get -qq install --no-install-recommends -y clang-12 libc++1-12;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal main" | tee -a "/etc/apt/sources.list.d/focal.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal universe" | tee -a "/etc/apt/sources.list.d/focal.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal-updates main" | tee -a "/etc/apt/sources.list.d/focal-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ focal-updates universe" | tee -a "/etc/apt/sources.list.d/focal-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main" | tee -a "/etc/apt/sources.list.d/llvm-12.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-12 libc++1-12;\
       export CC=clang-12; export CXX=clang++-12; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=12.0.1; export CXX_COMPILER_VERSION=12.0.1 ;;\
     "clang-13")\
-      apt-get -qq install --no-install-recommends -y clang-13 libc++1-13;\
+      echo "deb [trusted=yes] http://apt.llvm.org/jammy/ llvm-toolchain-jammy-13 main" | tee -a "/etc/apt/sources.list.d/llvm-13.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-13 libc++1-13;\
       export CC=clang-13; export CXX=clang++-13; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=13.0.1; export CXX_COMPILER_VERSION=13.0.1 ;;\
     "clang-14")\
-      apt-get -qq install --no-install-recommends -y clang-14 libc++1-14 libstdc++-13-dev;\
+      echo "deb [trusted=yes] http://apt.llvm.org/jammy/ llvm-toolchain-jammy-14 main" | tee -a "/etc/apt/sources.list.d/llvm-14.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-14 libc++1-14 libstdc++-13-dev;\
       export CC=clang-14; export CXX=clang++-14; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=14.0.6; export CXX_COMPILER_VERSION=14.0.6 ;;\
     "clang-15")\
-      apt-get -qq install --no-install-recommends -y clang-15 libc++1-15;\
+      echo "deb [trusted=yes] http://apt.llvm.org/lunar/ llvm-toolchain-lunar-15 main" | tee -a "/etc/apt/sources.list.d/llvm-15.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-15 libc++1-15;\
       export CC=clang-15; export CXX=clang++-15; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=15.0.6; export CXX_COMPILER_VERSION=15.0.6 ;;\
     "clang-16")\
-      apt-get -qq install --no-install-recommends -y clang-16 libc++1-16;\
+      echo "deb [trusted=yes] http://apt.llvm.org/lunar/ llvm-toolchain-lunar-16 main" | tee -a "/etc/apt/sources.list.d/llvm-16.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-16 libc++1-16;\
       export CC=clang-16; export CXX=clang++-16; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=16.0.0; export CXX_COMPILER_VERSION=16.0.0 ;;\
     "clang-17")\
-      apt-get -qq install --no-install-recommends -y clang-17 libc++1-17;\
+      echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-17 main" | tee -a "/etc/apt/sources.list.d/llvm-17.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-17 libc++1-17;\
       export CC=clang-17; export CXX=clang++-17; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=17.0.0; export CXX_COMPILER_VERSION=17.0.0 ;;\
     "clang-18")\
-      apt-get -qq install --no-install-recommends -y clang-18 libc++1-18;\
+      echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main" | tee -a "/etc/apt/sources.list.d/llvm-18.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-18 libc++1-18;\
       export CC=clang-18; export CXX=clang++-18; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=18.0.0; export CXX_COMPILER_VERSION=18.0.0 ;;\
     *)\
       echo "No compiler provided !";\
