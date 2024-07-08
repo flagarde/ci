@@ -8,19 +8,19 @@ RUN apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; ap
     "clang-5")\
       apt-get -qq update ;\
       apt-get -qq install --no-install-recommends -y gcc-9-base=9.4.0-1ubuntu1~16.04 ;\
-      apt-mark hold gcc-9-base ;;\
+      apt-mark hold gcc-9-base lib32gcc1;;\
     "clang-6")\
       apt-get -qq update ;\
       apt-get -qq install --no-install-recommends -y gcc-9-base=9.4.0-1ubuntu1~16.04 ;\
-      apt-mark hold gcc-9-base ;;\
+      apt-mark hold gcc-9-base lib32gcc1;;\
     "clang-7")\
       apt-get -qq update ;\
       apt-get -qq install --no-install-recommends -y gcc-9-base=9.4.0-1ubuntu1~16.04 ;\
-      apt-mark hold gcc-9-base ;;\
+      apt-mark hold gcc-9-base lib32gcc1;;\
     "clang-8")\
       apt-get -qq update ;\
       apt-get -qq install --no-install-recommends -y gcc-9-base=9.4.0-1ubuntu1~16.04 ;\
-      apt-mark hold gcc-9-base ;;\
+      apt-mark hold gcc-9-base lib32gcc1;;\
     esac &&\
     #apt-mark hold libsystemd0 &&\
     #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
