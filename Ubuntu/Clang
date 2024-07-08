@@ -25,10 +25,10 @@ RUN case $compiler in \
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null &&\
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ noble main" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null ;\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ noble universe" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null ;\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ noble-updates main" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null ;\
-    echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ noble-updates universe" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null ;\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ noble main" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null ;\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ noble universe" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null ;\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ noble-updates main" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null ;\
+    #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ noble-updates universe" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null ;\
     apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y &&\
     apt-get -qq install --no-install-recommends -y ca-certificates binutils make &&\
     #apt-get -qq update &&\
