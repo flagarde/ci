@@ -2,7 +2,9 @@ FROM ubuntu:24.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
-RUN case $compiler in \
+RUN apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y &&\
+    apt-get -qq install --no-install-recommends -y ca-certificates binutils make &&\
+    case $compiler in \
     "clang-5")\
       apt-get -qq update ;\
       apt-get -qq install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
@@ -29,8 +31,6 @@ RUN case $compiler in \
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ noble universe" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null ;\
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ noble-updates main" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null ;\
     echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ noble-updates universe" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null ;\
-    apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y &&\
-    apt-get -qq install --no-install-recommends -y ca-certificates binutils make &&\
     #apt-get -qq update &&\
     #apt-get -qq install --no-install-recommends -y wget gpg ca-certificates &&\
     #wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0xE1DD270288B4E6030699E45FA1715D88E1DF1F24&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/git.gpg" > /dev/null &&\
