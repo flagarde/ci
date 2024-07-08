@@ -4,23 +4,23 @@ SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
 RUN apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y &&\
     apt-get -qq install --no-install-recommends -y ca-certificates binutils make &&\
-    case $compiler in \
-    "clang-5")\
-      apt-get -qq update ;\
-      apt-get -qq install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
-      apt-mark hold gcc-10-base ;;\
-      ls ;;\
-    "clang-7")\
-      ls ;;\
-      apt-get -qq update ;\
-      apt-get -qq install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
-      apt-mark hold gcc-10-base ;;\
-    "clang-8")\
-      apt-get -qq update ;\
-      apt-get -qq install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
-      apt-mark hold gcc-10-base ;;\
-      ls ;;\
-    esac &&\
+    #case $compiler in \
+    #"clang-5")\
+      #apt-get -qq update ;\
+      #apt-get -qq install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
+      #apt-mark hold gcc-10-base ;;\
+      #ls ;;\
+    #"clang-7")\
+    #  ls ;;\
+    #  apt-get -qq update ;\
+    #  apt-get -qq install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
+    #  apt-mark hold gcc-10-base ;;\
+    #"clang-8")\
+    #  apt-get -qq update ;\
+    #  apt-get -qq install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
+    #  apt-mark hold gcc-10-base ;;\
+    #  ls ;;\
+    #esac &&\
     #apt-mark hold libsystemd0 &&\
     #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
     #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
@@ -50,7 +50,7 @@ RUN apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; ap
     #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
     #echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;;\
     #esac &&\
-    echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble main" | tee -a "/etc/apt/sources.list.d/llvm.list" >/dev/null &&\
+    #echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble main" | tee -a "/etc/apt/sources.list.d/llvm.list" >/dev/null &&\
     #wget -q -O - "https://apt.kitware.com/keys/kitware-archive-latest.asc" | gpg -q --dearmor - | tee "/usr/share/keyrings/kitware.gpg" >/dev/null &&\
     echo 'deb [trusted=yes] https://apt.kitware.com/ubuntu/ noble main' | tee "/etc/apt/sources.list.d/kitware.list" >/dev/null &&\
     #wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0x1E9377A2BA9EF27F&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/toolchains.gpg" > /dev/null &&\
