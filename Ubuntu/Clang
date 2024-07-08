@@ -72,10 +72,9 @@ RUN case $compiler in \
     #wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0x1E9377A2BA9EF27F&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/toolchains.gpg" > /dev/null &&\
     echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null &&\
     echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null &&\
-    apt-get -qq update &&\
-    apt-get -qq install --no-install-recommends -y binutils make ca-certificates &&\
+    apt-get -qq update; apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y
+    #apt-get -qq install --no-install-recommends -y binutils make ca-certificates &&\
     #apt-get -qq remove -y wget gpg &&\
-    apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y
 
 FROM base AS compiler
 ARG compiler
