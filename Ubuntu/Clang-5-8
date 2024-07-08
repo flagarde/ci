@@ -1,9 +1,21 @@
-FROM ubuntu:22.04 AS base
+FROM ubuntu:20.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 ARG compiler
-RUN apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y &&\
-    apt-get -qq install --no-install-recommends -y wget gpg ca-certificates binutils make &&\
+RUN case $compiler in \
+    "clang-5")\
+      apt-get -qq update ;\
+      apt-get -qq install --no-install-recommends -y gcc-10-base=10.3.0-1ubuntu1~20.04 ;\
+      apt-mark hold gcc-10-base ;;\
+    "clang-7")\
+      apt-get -qq update ;\
+      apt-get -qq install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
+      apt-mark hold gcc-10-base ;;\
+    "clang-8")\
+      apt-get -qq update ;\
+      apt-get -qq install --no-install-recommends -y gcc-10-base=10.5.0-1ubuntu1~20.04 ;\
+      apt-mark hold gcc-10-base ;;\
+    esac &&\
     #apt-mark hold libsystemd0 &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null &&\
@@ -13,44 +25,35 @@ RUN apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; ap
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty universe" | tee -a "/etc/apt/sources.list.d/trusty.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates main" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
     echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates universe" | tee -a "/etc/apt/sources.list.d/trusty-updates.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ noble main" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ noble universe" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ noble-updates main" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ noble-updates universe" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null &&\
+    echo "deb http://archive.ubuntu.com/ubuntu/ noble main" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ noble universe" | tee -a "/etc/apt/sources.list.d/noble.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ noble-updates main" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ noble-updates universe" | tee -a "/etc/apt/sources.list.d/noble-updates.list" >/dev/null ;\
+    apt-get -qq update &&\
+    apt-get -qq install --no-install-recommends -y wget gpg ca-certificates &&\
     wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0xE1DD270288B4E6030699E45FA1715D88E1DF1F24&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/git.gpg" > /dev/null &&\
     wget -q -O - "https://apt.llvm.org/llvm-snapshot.gpg.key" | gpg -q --dearmor - | tee "/usr/share/keyrings/llvm.gpg" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/git.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main" | tee -a "/etc/apt/sources.list.d/git.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ jammy main" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ jammy universe" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates main" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates universe" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
-    echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null &&\
-    #echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-3 main" | tee -a "/etc/apt/sources.list.d/llvm-3.list" >/dev/null &&\
-    #echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4 main" | tee -a "/etc/apt/sources.list.d/llvm-4.list" >/dev/null &&\
+    echo "deb [signed-by=/usr/share/keyrings/git.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main" | tee -a "/etc/apt/sources.list.d/git.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ jammy main" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ jammy universe" | tee -a "/etc/apt/sources.list.d/jammy.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates main" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates universe" | tee -a "/etc/apt/sources.list.d/jammy-updates.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
+    echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;;\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-5.0 main" | tee -a "/etc/apt/sources.list.d/llvm-5.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-6.0 main" | tee -a "/etc/apt/sources.list.d/llvm-6.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" | tee -a "/etc/apt/sources.list.d/llvm-7.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main" | tee -a "/etc/apt/sources.list.d/llvm-8.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-9 main" | tee -a "/etc/apt/sources.list.d/llvm-9.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a "/etc/apt/sources.list.d/llvm-10.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main" | tee -a "/etc/apt/sources.list.d/llvm-11.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main" | tee -a "/etc/apt/sources.list.d/llvm-12.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main" | tee -a "/etc/apt/sources.list.d/llvm-13.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main" | tee -a "/etc/apt/sources.list.d/llvm-14.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-15 main" | tee -a "/etc/apt/sources.list.d/llvm-15.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-16 main" | tee -a "/etc/apt/sources.list.d/llvm-16.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-17 main" | tee -a "/etc/apt/sources.list.d/llvm-17.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-18 main" | tee -a "/etc/apt/sources.list.d/llvm-18.list" >/dev/null &&\
-    echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal main" | tee -a "/etc/apt/sources.list.d/llvm.list" >/dev/null &&\
     wget -q -O - "https://apt.kitware.com/keys/kitware-archive-latest.asc" | gpg -q --dearmor - | tee "/usr/share/keyrings/kitware.gpg" >/dev/null &&\
     echo 'deb [trusted=yes] https://apt.kitware.com/ubuntu/ focal main' | tee "/etc/apt/sources.list.d/kitware.list" >/dev/null &&\
+    echo 'deb [signed-by=/usr/share/keyrings/kitware.gpg] https://apt.kitware.com/ubuntu/ focal-rc main' | tee -a "/etc/apt/sources.list.d/kitware-rc.list" >/dev/null && \
     wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0x1E9377A2BA9EF27F&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/toolchains.gpg" > /dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/toolchains.gpg] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null &&\
     echo "deb [signed-by=/usr/share/keyrings/toolchains.gpg] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null &&\
     apt-get -qq update &&\
+    apt-get -qq install --no-install-recommends -y binutils make &&\
     apt-get -qq remove -y wget gpg &&\
     apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y
 
@@ -74,7 +77,7 @@ RUN case $compiler in \
     "clang-8")\
       apt-get -qq install --no-install-recommends -y clang-8 libc++1-8;\
       export CC=clang-8; export CXX=clang++-8; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=8.0.1; export CXX_COMPILER_VERSION=8.0.1 ;;\
-    "*")\
+    *)\
       echo "No compiler provided !";\
       echo "Clang Available : clang-3.5, clang-3.6, clang-3.7, clang-3.8, clang-3.9, clang-4, clang-5, clang-6, clang-7, clang-8, clang-9, clang-10, clang-11, clang-12, clang-13, clang-14, clang-15, clang-16, clang-17, clang-18";;\
     esac &&\
