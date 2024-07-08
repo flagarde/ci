@@ -5,14 +5,7 @@ ARG compiler
 RUN apt-get -qq update ; apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y &&\
     apt-get -qq install --no-install-recommends -y ca-certificates binutils make &&\
     echo 'deb [trusted=yes] https://apt.kitware.com/ubuntu/ noble main' | tee "/etc/apt/sources.list.d/kitware.list" >/dev/null &&\
-    #wget -q -O - "https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB" | gpg -q --dearmor - | tee "/usr/share/keyrings/oneapi.gpg" >/dev/null &&\
-    echo "deb [trusted=yes] https://apt.repos.intel.com/oneapi all main" | tee "/etc/apt/sources.list.d/oneAPI.list" >/dev/null &&\
-    #wget -q -O - "https://keyserver.ubuntu.com/pks/lookup?search=0x1E9377A2BA9EF27F&fingerprint=on&op=get" | gpg -q --dearmor - | tee "/usr/share/keyrings/toolchains.gpg" > /dev/null &&\
-    echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null &&\
-    echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | tee -a "/etc/apt/sources.list.d/toolchains-precise.list" >/dev/null &&\
-    apt-get -qq update
-    #apt-get -qq remove -y wget gpg
-    #apt-get -qq dist-upgrade --no-install-recommends -y; apt-get autoremove -y; apt-get clean -y
+    echo "deb [trusted=yes] https://apt.repos.intel.com/oneapi all main" | tee "/etc/apt/sources.list.d/oneAPI.list" >/dev/null
 
 FROM base AS compiler
 ARG compiler
