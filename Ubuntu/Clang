@@ -142,6 +142,10 @@ RUN case $compiler in \
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null ;\
       #echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-5.0 main" | tee -a "/etc/apt/sources.list.d/llvm-5.list" >/dev/null ;\
       apt-get update ;apt-get install --no-install-recommends -y clang-5.0;\
@@ -151,6 +155,10 @@ RUN case $compiler in \
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null ;\
       #echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-6.0 main" | tee -a "/etc/apt/sources.list.d/llvm-6.list" >/dev/null ;\
       apt-get update ; apt-get install --no-install-recommends -y clang-6.0;\
@@ -160,6 +168,10 @@ RUN case $compiler in \
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null ;\
       #echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" | tee -a "/etc/apt/sources.list.d/llvm-7.list" >/dev/null ;\
       apt-get update ; apt-get install --no-install-recommends -y clang-7 libc++1-7;\
@@ -169,6 +181,10 @@ RUN case $compiler in \
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic universe" | tee -a "/etc/apt/sources.list.d/bionic.list" >/dev/null ;\
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates main" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ bionic-updates universe" | tee -a "/etc/apt/sources.list.d/bionic-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial main" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial universe" | tee -a "/etc/apt/sources.list.d/xenial.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates main" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://archive.ubuntu.com/ubuntu/ xenial-updates universe" | tee -a "/etc/apt/sources.list.d/xenial-updates.list" >/dev/null ;\
       echo "deb [trusted=yes] http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main" | tee -a "/etc/apt/sources.list.d/toolchains-xenial.list" >/dev/null ;\
       #echo "deb [trusted=yes] http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main" | tee -a "/etc/apt/sources.list.d/llvm-8.list" >/dev/null ;\
       apt-get update ; apt-get install --no-install-recommends -y clang-8 libc++1-8;\
