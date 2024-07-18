@@ -83,7 +83,15 @@ jobs:
       run: gcc -Wall -Wextra --pedantic -Q --help=warning
 
     - name: 🔧 Configure
-      run: cmake -S ./Ubuntu/tests -B ./build -D CMAKE_BUILD_TYPE=Release
+      uses: cmake-tools/run-cmake@v0-alpha
+      with:
+        mode: configure
+        source_dir: ./Ubuntu/tests
+        binary_dir: ./build
+        variables: |
+          CMAKE_BUILD_TYPE=Release
 
     - name: ⚙️ Build
-      run: cmake --build ./build --config Release --parallel 2
+      uses: cmake-tools/run-cmake@v0-alpha
+      with:
+        config: Release
