@@ -64,7 +64,7 @@ jobs:
       run: apt update; apt list --installed
 
     - name: ⬇️ Install CMake
-      run: apt-get install --no-install-recommends -y cmake
+      run: apt-get install --no-install-recommends -y cmake sudo
 
     - name: ⬇️ Install with apt-get
       if: ${{ contains(matrix.image, 'gcc') }}
