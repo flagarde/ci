@@ -94,4 +94,5 @@ jobs:
     - name: ⚙️ Build
       uses: cmake-tools/run-cmake@v0-alpha
       with:
+        mode: build
         config: Release
