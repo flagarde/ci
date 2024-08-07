@@ -43,7 +43,7 @@ jobs:
         images: ghcr.io/${{ github.repository }}-ubuntu-intel-2024.2-x86_64:latest
 
     - name: ⚙️ Build and push image
-      uses: docker/build-push-action@v6.5.0
+      uses: docker/build-push-action@v6.6.1
       with:
         context: ./Ubuntu
         push: ${{ github.event_name == 'workflow_dispatch' }}
@@ -60,7 +60,7 @@ jobs:
         logout: false
 
     - name: ⚙️ Build and push image
-      uses: docker/build-push-action@v6.5.0
+      uses: docker/build-push-action@v6.6.1
       with:
         context: ./Ubuntu
         push: ${{ github.event_name == 'workflow_dispatch' }}
