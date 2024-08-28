@@ -47,7 +47,7 @@ jobs:
       run: apt-get install --no-install-recommends -y cmake
 
     - name: ⬇️ Install with apt-get
-      run: apt-get install --no-install-recommends -y python3 python3-pip
+      run: apt-get install --no-install-recommends -y python3 python3-pip sudo
 
     - name: ⬇️ Install gcc-flags
       run: python3 -m pip install --break-system-packages gcc-flags
@@ -113,7 +113,7 @@ jobs:
       run: apt update; apt list --installed
 
     - name: ⬇️ Install CMake
-      run: apt-get install --no-install-recommends -y cmake
+      run: apt-get install --no-install-recommends -y cmake sudo
 
     - name: 🔧 Configure
       uses: cmake-tools/run-cmake@v0-alpha
