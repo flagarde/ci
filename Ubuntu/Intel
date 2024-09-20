@@ -22,7 +22,7 @@ RUN apt install --no-install-recommends -y g++13 &&\
     echo "** CXX_COMPILER_ID=$CXX_COMPILER_ID, CXX_COMPILER_VERSION=$CXX_COMPILER_VERSION" &&\
     case $tests in \
     "true")\
-      apt-get -qq install --no-install-recommends -y cmake ;\
+      apt-get -qq install --no-install-recommends -y cmake intel-oneapi-compiler-dpcpp-cpp;\
       cmake -B ./build -S ./tests -D RUN_COMPILER_CHECK=ON;\
       if [ $? -eq 0 ];\
         then exit 0;\
