@@ -3,14 +3,17 @@ name: Intel
 
 on:
   push:
-    branches: [main]
-    paths:
-    - Ubuntu/**
-    - .github/workflows/Intel.yml
+    paths-ignore:
+      - '.github/workflows/**'
+      - 'Ubuntu/**'
+      - '!.github/workflows/Intel.yml'
+      - '!Ubuntu/Intel'
   pull_request:
-    paths:
-    - Ubuntu/**
-    - .github/workflows/Intel.yml
+    paths-ignore:
+      - '.github/workflows/**'
+      - 'Ubuntu/**'
+      - '!.github/workflows/Intel.yml'
+      - '!Ubuntu/Intel'
   workflow_dispatch:
 
 jobs:
