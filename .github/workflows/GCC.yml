@@ -1,16 +1,18 @@
 ---
 name: GCC
-
 on:
   push:
-    branches: [main]
-    paths:
-    - Ubuntu/**
-    - .github/workflows/GCC.yml
+    paths-ignore:
+      - '.github/workflows/**'
+      - 'Ubuntu/**'
+      - '!.github/workflows/GCC.yml'
+      - '!Ubuntu/GCC'
   pull_request:
-    paths:
-    - Ubuntu/**
-    - .github/workflows/GCC.yml
+    paths-ignore:
+      - '.github/workflows/**'
+      - 'Ubuntu/**'
+      - '!.github/workflows/GCC.yml'
+      - '!Ubuntu/GCC'
   workflow_dispatch:
 
 jobs:
