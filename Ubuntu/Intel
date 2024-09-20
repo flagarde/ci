@@ -15,13 +15,14 @@ COPY tests ./tests/
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 RUN apt-get -qq upgrade; apt-get -qq autoremove -y ; apt-get -qq clean -y &&\
+    apt-get -qq install --no-install-recommends -y cmake intel-oneapi-compiler-dpcpp-cpp &&\
     echo "** make --version :" &&\
     make --version &&\
     echo "** C_COMPILER_ID=$C_COMPILER_ID, C_COMPILER_VERSION=$C_COMPILER_VERSION" &&\
     echo "** CXX_COMPILER_ID=$CXX_COMPILER_ID, CXX_COMPILER_VERSION=$CXX_COMPILER_VERSION" &&\
     case $tests in \
     "true")\
-      apt-get -qq install --no-install-recommends -y cmake intel-oneapi-compiler-dpcpp-cpp;\
+      apt-get -qq install --no-install-recommends -y cmake;\
       cmake -B ./build -S ./tests -D RUN_COMPILER_CHECK=ON;\
       if [ $? -eq 0 ];\
         then exit 0;\
