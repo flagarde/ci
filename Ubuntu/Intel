@@ -14,8 +14,7 @@ WORKDIR .
 COPY tests ./tests/
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
-RUN apt install --no-install-recommends -y g++13 &&\
-    apt-get -qq upgrade; apt-get -qq autoremove -y ; apt-get -qq clean -y &&\
+RUN apt-get -qq upgrade; apt-get -qq autoremove -y ; apt-get -qq clean -y &&\
     echo "** make --version :" &&\
     make --version &&\
     echo "** C_COMPILER_ID=$C_COMPILER_ID, C_COMPILER_VERSION=$C_COMPILER_VERSION" &&\
