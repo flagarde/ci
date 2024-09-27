@@ -4,16 +4,16 @@ name: Clang
 on:
   push:
     paths-ignore:
-      - '.github/workflows/**'
-      - 'Ubuntu/**'
-      - '!.github/workflows/Clang.yml'
-      - '!Ubuntu/Clang'
+    - .github/workflows/**
+    - Ubuntu/**
+    - '!.github/workflows/Clang.yml'
+    - '!Ubuntu/Clang'
   pull_request:
     paths-ignore:
-      - '.github/workflows/**'
-      - 'Ubuntu/**'
-      - '!.github/workflows/Clang.yml'
-      - '!Ubuntu/Clang'
+    - .github/workflows/**
+    - Ubuntu/**
+    - '!.github/workflows/Clang.yml'
+    - '!Ubuntu/Clang'
   workflow_dispatch:
 
 jobs:
