@@ -51,7 +51,7 @@ jobs:
         images: ghcr.io/${{ github.repository }}-ubuntu-clang-${{ matrix.version }}-x86_64:latest
 
     - name: ⚙️ Build and push image
-      uses: docker/build-push-action@v6.13.0
+      uses: docker/build-push-action@v6.14.0
       with:
         context: ./Ubuntu
         build-args: |
@@ -70,7 +70,7 @@ jobs:
         logout: false
 
     - name: ⚙️ Build and push image
-      uses: docker/build-push-action@v6.13.0
+      uses: docker/build-push-action@v6.14.0
       with:
         context: ./Ubuntu
         build-args: |
