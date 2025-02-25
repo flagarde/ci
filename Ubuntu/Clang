@@ -145,7 +145,7 @@ RUN case $compiler in \
       export CC=clang-19; export CXX=clang++-19; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=19.0.0; export CXX_COMPILER_VERSION=19.0.0 ;;\
     "clang-20")\
       #echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-20 main" | tee -a "/etc/apt/sources.list.d/llvm-20.list" >/dev/null ;\
-      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-20 libc++1-20 libc++abi1-20;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-20 libc++1-20;\
       export CC=clang-19; export CXX=clang++-20; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=20.0.0; export CXX_COMPILER_VERSION=20.0.0 ;;\
     *)\
       echo "No compiler provided !";\
