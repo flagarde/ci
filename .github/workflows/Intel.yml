@@ -45,15 +45,6 @@ jobs:
       with:
         images: ghcr.io/${{ github.repository }}-ubuntu-intel-2024.2-x86_64:latest
 
-    - name: ⚙️ Build and push image
-      uses: docker/build-push-action@v6.14.0
-      with:
-        context: ./Ubuntu
-        push: ${{ github.event_name == 'workflow_dispatch' }}
-        file: ./Ubuntu/Intel
-        tags: ghcr.io/${{ github.repository }}-ubuntu-intel-2024.2-x86_64:latest
-        labels: ${{ steps.ghcr.outputs.labels }}
-
     - name: 🔑 Log in to the hub.docker
       if: ${{ github.event_name == 'workflow_dispatch' }}
       uses: docker/login-action@v3.3.0
@@ -68,5 +59,7 @@ jobs:
         context: ./Ubuntu
         push: ${{ github.event_name == 'workflow_dispatch' }}
         file: ./Ubuntu/Intel
-        tags: ${{ github.repository }}-ubuntu-intel-2024.2-x86_64:latest
+        tags: |
+          ${{ github.repository }}-ubuntu-intel-2024.2-x86_64:latest
+          ghcr.io/${{ github.repository }}-ubuntu-intel-2024.2-x86_64:latest
         labels: ${{ steps.hub.outputs.labels }}
