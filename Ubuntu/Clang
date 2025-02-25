@@ -140,11 +140,11 @@ RUN case $compiler in \
       apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-18 libc++1-18 libc++abi1-18;\
       export CC=clang-18; export CXX=clang++-18; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=18.0.0; export CXX_COMPILER_VERSION=18.0.0 ;;\
     "clang-19")\
-      #echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-19 main" | tee -a "/etc/apt/sources.list.d/llvm-19.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-19 main" | tee -a "/etc/apt/sources.list.d/llvm-19.list" >/dev/null ;\
       apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-19 libc++1-19 libc++abi1-19;\
       export CC=clang-19; export CXX=clang++-19; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=19.0.0; export CXX_COMPILER_VERSION=19.0.0 ;;\
     "clang-20")\
-      #echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-20 main" | tee -a "/etc/apt/sources.list.d/llvm-20.list" >/dev/null ;\
+      echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-20 main" | tee -a "/etc/apt/sources.list.d/llvm-20.list" >/dev/null ;\
       apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-20 libc++1-20;\
       export CC=clang-19; export CXX=clang++-20; export C_COMPILER_ID=Clang; export CXX_COMPILER_ID=Clang; export C_COMPILER_VERSION=20.0.0; export CXX_COMPILER_VERSION=20.0.0 ;;\
     *)\
