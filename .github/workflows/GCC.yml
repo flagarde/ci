@@ -58,7 +58,7 @@ jobs:
         logout: false
 
     - name: ⚙️ Build and push image
-      uses: docker/build-push-action@v6.14.0
+      uses: docker/build-push-action@v6.15.0
       with:
         context: ./Ubuntu
         build-args: |
