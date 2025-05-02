@@ -66,16 +66,16 @@ ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash","-o","pipefail","-c"]
 RUN case $compiler in \
     "clang-5")\
-      apt-get -qq install --no-install-recommends -y clang-5.0 lib32stdc++6=8.4.0-1ubuntu1~18.04;\
+      apt-get -qq install --no-install-recommends -y clang-5.0 lib32stdc++6=8.4.0-1ubuntu1~18.04 binutils make ;\
       export CC=clang-5.0; export CXX=clang++-5.0 ;;\
     "clang-6")\
-      apt-get -qq install --no-install-recommends -y clang-6.0 lib32stdc++6=8.4.0-1ubuntu1~18.04;\
+      apt-get -qq install --no-install-recommends -y clang-6.0 lib32stdc++6=8.4.0-1ubuntu1~18.04 binutils make;\
       export CC=clang-6.0; export CXX=clang++-6.0 ;;\
     "clang-7")\
-      apt-get -qq install --no-install-recommends -y clang-7 lib32stdc++6=8.4.0-1ubuntu1~18.04 libc++1-7 libc++abi1-7;\
+      apt-get -qq install --no-install-recommends -y clang-7 lib32stdc++6=8.4.0-1ubuntu1~18.04 libc++1-7 libc++abi1-7 binutils make;\
       export CC=clang-7; export CXX=clang++-7 ;;\
     "clang-8")\
-      apt-get -qq install --no-install-recommends -y clang-8 lib32stdc++6=8.4.0-1ubuntu1~18.04 libc++1-8 libc++abi1-8;\
+      apt-get -qq install --no-install-recommends -y clang-8 lib32stdc++6=8.4.0-1ubuntu1~18.04 libc++1-8 libc++abi1-8 binutils make;\
       export CC=clang-8; export CXX=clang++-8 ;;\
     *)\
       echo "No compiler provided !";\
