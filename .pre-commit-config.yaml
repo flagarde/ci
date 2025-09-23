@@ -65,13 +65,13 @@ repos:
   - id: codespell
 
 - repo: https://github.com/AleksaC/hadolint-py
-  rev: v2.13.1
+  rev: v2.14.0
   hooks:
   - id: hadolint
     args: [--ignore, DL3008, --ignore, DL3009, --ignore, DL3000, --ignore, DL3004, --ignore, SC2181, --ignore, DL3003, --ignore, SC2317, --ignore, DL3005]
 
 - repo: https://github.com/sirosen/check-jsonschema
-  rev: 0.33.3
+  rev: 0.34.0
   hooks:
   - id: check-github-workflows
 
