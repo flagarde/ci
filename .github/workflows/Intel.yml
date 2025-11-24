@@ -27,7 +27,7 @@ jobs:
 
     steps:
     - name: 📥 Checkout
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: 🔑 Log in to ghcr.io
       uses: docker/login-action@v3.6.0
