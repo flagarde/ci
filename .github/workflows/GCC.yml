@@ -43,7 +43,7 @@ jobs:
         logout: false
 
     - name: 📤 Extract metadata from ghcr.io
-      uses: docker/metadata-action@v5.9.0
+      uses: docker/metadata-action@v5.10.0
       if: ${{ github.event_name == 'workflow_dispatch' }}
       id: ghcr
       with:
