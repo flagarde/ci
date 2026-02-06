@@ -147,9 +147,17 @@ RUN case $compiler in \
       echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-20 main" | tee -a "/etc/apt/sources.list.d/llvm-20.list" >/dev/null ;\
       apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-20 libc++1-20;\
       export CC=clang-20; export CXX=clang++-20 ;;\
+    "clang-21")\
+      echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-21 main" | tee -a "/etc/apt/sources.list.d/llvm-21.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-21 libc++1-21;\
+      export CC=clang-21; export CXX=clang++-21 ;;\
+    "clang-22")\
+      echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-22 main" | tee -a "/etc/apt/sources.list.d/llvm-22.list" >/dev/null ;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-22 libc++1-22;\
+      export CC=clang-22; export CXX=clang++-22 ;;\
     *)\
       echo "No compiler provided !";\
-      echo "Clang Available : clang-3.5, clang-3.6, clang-3.7, clang-3.8, clang-3.9, clang-4, clang-5, clang-6, clang-7, clang-8, clang-9, clang-10, clang-11, clang-12, clang-13, clang-14, clang-15, clang-16, clang-17, clang-18";;\
+      echo "Clang Available : clang-[3.5,22]";;\
     esac &&\
     ln -s /usr/bin/$CC /usr/bin/clang &&\
     ln -s /usr/bin/$CXX /usr/bin/clang++ &&\
