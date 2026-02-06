@@ -149,11 +149,11 @@ RUN case $compiler in \
       export CC=clang-20; export CXX=clang++-20 ;;\
     "clang-21")\
       echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-21 main" | tee -a "/etc/apt/sources.list.d/llvm-21.list" >/dev/null ;\
-      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-21 libc++1-21;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-21 libc++1;\
       export CC=clang-21; export CXX=clang++-21 ;;\
     "clang-22")\
       echo "deb [trusted=yes] http://apt.llvm.org/noble/ llvm-toolchain-noble-22 main" | tee -a "/etc/apt/sources.list.d/llvm-22.list" >/dev/null ;\
-      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-22 libc++1-22;\
+      apt-get -qq update ; apt-get -qq install --no-install-recommends -y clang-22 libc++1;\
       export CC=clang-22; export CXX=clang++-22 ;;\
     *)\
       echo "No compiler provided !";\
