@@ -102,6 +102,10 @@ jobs:
         - clang-16
         - clang-17
         - clang-18
+        - clang-19
+        - clang-20
+        - clang-21
+        - clang-22
 
     container: flagarde/ci-ubuntu-${{ matrix.image }}-x86_64:latest
 
