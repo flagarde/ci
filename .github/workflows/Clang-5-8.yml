@@ -1,5 +1,5 @@
 ---
-name: Clang
+name: Clang (5-8)
 
 on:
   push:
