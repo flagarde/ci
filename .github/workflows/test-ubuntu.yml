@@ -39,7 +39,7 @@ jobs:
     steps:
 
     - name: 📥 Checkout
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: 📝 List installed packages
       run: apt update; apt list --installed
@@ -112,7 +112,7 @@ jobs:
     steps:
 
     - name: 📥 Checkout
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: 📝 List installed packages
       run: apt update; apt list --installed
