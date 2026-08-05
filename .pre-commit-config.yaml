@@ -54,7 +54,7 @@ repos:
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '150']
 
 - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-  rev: 3.6.1
+  rev: 3.8.0
   hooks:
   - id: editorconfig-checker
     alias: ec
@@ -65,7 +65,7 @@ repos:
   - id: codespell
 
 - repo: https://github.com/AleksaC/hadolint-py
-  rev: v2.14.0
+  rev: v2.15.1
   hooks:
   - id: hadolint
     args: [--ignore, DL3008, --ignore, DL3009, --ignore, DL3000, --ignore, DL3004, --ignore, SC2181, --ignore, DL3003, --ignore, SC2317, --ignore, DL3005]
